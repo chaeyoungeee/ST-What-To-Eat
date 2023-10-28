@@ -1,3 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@keyframes scaleUp {
+  from {
+  }
+
+  to {
+    font-size: 1.3rem;
+  }
+}
+
+@keyframes scaleDown {
+  from {
+    font-size: 1.3rem;
+  }
+
+  to {
+    font-size: 0rem;
+  }
+}
+
 .App {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
   text-align: center;
 }
+
+#navbar {
+  padding: 1rem 3rem;
+  background-color: rgba($color: #000000, $alpha: 0) !important;
+  --bs-navbar-color: rgba(var(--bs-emphasis-color-rgb), 1);
+
+  @media (min-width: 768px) {
+    .container, .container-md, .container-sm {
+      max-width: 2000px;
+    }
+  }
+
+  .main-bar {
+    margin-left: 3rem;
+    .nav-link {
+      width: 9rem;
+      transition: 0.3s ease-in all;
+      
+      .menu-icon {
+        position: relative;
+        bottom: 0.1rem;
+        font-size: 0;
+        margin-right: 0.3rem;
+        transition: 0.3s ease-in all;
+      }
+      
+      &:hover {
+        background-color: rgb(238, 238, 238);
+    
+        .menu-icon {
+          animation: scaleUp 0.3s linear forwards;
+        }
+      }
+      &:not(:hover) {
+        .menu-icon {
+          animation: scaleDown 0.3s linear forwards;
+        }
+      }
+    }
+  }
+
+  .side-bar {
+    .likes {
+      width: 3rem;
+      height: 3rem;
+      .icon {
+        position: relative;
+        bottom: 0.1rem;
+        font-size: 1.3rem;
+      }
+    }
+    .login {
+      width: 7rem;
+    }
+    .nav-link {
+      background-color: rgb(238, 238, 238);
+      transition: 0.3s ease-in all;
+      &:hover {
+        background-color: rgb(247, 247, 247);
+      }
+    }
+  }
+
+  .nav-link {
+    border-radius: 1.5rem;
+    padding: 0.8rem;
+    margin: 0.3rem 0.5rem;    
+  }
+}
+
