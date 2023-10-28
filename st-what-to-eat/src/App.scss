@@ -20,11 +20,35 @@
 }
 
 .App {
-  font-family: "Montserrat", sans-serif;
+  // font-family: "Montserrat", sans-serif;
   font-weight: 500;
   text-align: center;
 }
 
+
+// down -> up 화면 전환
+.bottom {
+  visibility: hidden;
+  transform: translateY(50rem);
+}
+
+.up {
+  visibility: visible;
+  transform: translateY(0);
+  transition: 0.5s ease all;
+}
+
+//fade-in 화면 전환
+.start {
+  opacity: 0;
+}
+.end {
+  opacity: 1;
+  transition: 1s ease all;
+}
+
+
+// navbar style
 #navbar {
   padding: 1rem 3rem;
   background-color: rgba($color: #000000, $alpha: 0) !important;
@@ -94,3 +118,24 @@
   }
 }
 
+
+
+// main page title
+.main {
+  padding: 1rem 5rem;
+  .title {
+      h1 {
+        margin: 0;
+        padding: 0;
+        line-height: 1.1;
+        text-align: left;
+        font-size: calc(12vw + 1rem)
+      }
+  }
+  img {
+    width: 60%;
+    position: fixed;
+    top: 10rem;
+    right: 0rem;
+  }
+}
