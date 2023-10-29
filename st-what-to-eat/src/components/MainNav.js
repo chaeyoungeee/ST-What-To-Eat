@@ -35,9 +35,9 @@ function MainNav() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="main-bar">
-            <Nav.Link>
+            <Nav.Link href="#random">
               <PiBowlFood className="menu-icon"></PiBowlFood>
-              Today
+              Random
             </Nav.Link>
             <Nav.Link href="#best5">
               <FiAward className="menu-icon"></FiAward>
