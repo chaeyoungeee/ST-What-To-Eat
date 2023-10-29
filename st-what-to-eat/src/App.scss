@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+* {
+  --scroll-bar: #d2d2d2;
+}
+
 @keyframes scaleUp {
   from {
   }
@@ -35,7 +39,7 @@
 .up {
   visibility: visible;
   transform: translateY(0);
-  transition: 0.5s ease all;
+  transition: 0.3s ease all;
 }
 
 //fade-in 화면 전환
@@ -44,7 +48,7 @@
 }
 .end {
   opacity: 1;
-  transition: 1s ease all;
+  transition: 0.5s ease all;
 }
 
 
@@ -146,4 +150,45 @@
         left: calc(25vw + 0.5rem);
       }
   }
+}
+
+
+
+// img 슬라이더
+img-slider {
+  width: 70%;
+  height: 20vw;
+  color: var(--scroll-bar);
+  display: flex;
+  list-style: none;
+  overflow-x: scroll;
+  padding: 20px 0;
+  flex: 0 0 600px;
+  margin: 0 auto;
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background: rgb(247, 247, 247);
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-bar);
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: rgb(247, 247, 247);
+}
+
+li {
+  flex: 0 0 20vw;
+  background: var(--scroll-bar);
+  margin: 0 3rem 0 0;
+}
+
+li:last-of-type {
+  margin: 0;
 }
