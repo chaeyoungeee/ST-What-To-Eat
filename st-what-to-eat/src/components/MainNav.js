@@ -39,7 +39,7 @@ function MainNav() {
               <PiBowlFood className="menu-icon"></PiBowlFood>
               Today
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link href="#best5">
               <FiAward className="menu-icon"></FiAward>
               Best 5
             </Nav.Link>

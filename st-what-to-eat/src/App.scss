@@ -1,7 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-* {
-  --scroll-bar: #d2d2d2;
+:root {
+  --white: #fffdf8;
+    --black: #1c1c1c;
+    --purple: #ab9ff2;
+    --lilac: #e2dffe;
+    --yellow: #ffd13f;
+    --blue: rgb(61, 129, 255);
+    --midnightPurple: #3c315b;
+    --pink: #ff2833;
+    --green: #2ec08b;
+    --moonYellow: #ffffc4;
+    --red: #ff4f6d;
+    --grey: #e8e6e2;
+    --dark1: #161618;
+    --dark3: #232326;
+    --dark4: #28282c;
+    --dark5: #2e2e32;
+    --dark6: #34343a;
+    --dark8: #5842c3;
+    --dark9: #706f78;
+    --dark10: #7e7d86;
+    --dark11: #a09fa6;
+    --dark12: #ededef;
+    --light3: #f4f2f4;
+    --light5: #e9e8ea;
+    --light6: #e4e2e4;
+    --light9: #908e96;
+    --light10: #86848d;
+    --darkViolet4: #2c2250;
+    --darkViolet6: #392c72;
+    --violet1: #fdfcfe;
+    --violet3: #f5f2ff;
+    --violet4: #ede9fe;
+    --violet6: #d7cff9;
+    --violet8: #aa99ec;
+
+    --themeCardBgColor: var(--light3);
+    --themeCardShadow: var(--light6);
+
+    --themeTextColor: var(--black);
+    --themeTitleColor: var(--midnightPurple);
+    --themeTitleBgColor: var(--violet4);
+    
+    --themeSubNavBgColor: var(--violet1);
+    --themeNavColor1: var(--violet4);
+    --themeNavColor2: var(--violet3);
+
+    --themeFooterBgColor: var(--light3);
+    --themeFooterInputColor: var(--white);
+
+    --themeScrollBar: var(--light6);
+
+    --themeLikeColor: var(--red);
+    --themeRecommendColor: var(--blue);
 }
 
 @keyframes scaleUp {
@@ -79,7 +131,7 @@
       }
       
       &:hover {
-        background-color: rgb(238, 238, 238);
+        background-color: var(--themeNavColor1);
     
         .menu-icon {
           animation: scaleUp 0.3s linear forwards;
@@ -108,13 +160,13 @@
       width: 7rem;
     }
     .nav-link {
-      background-color: rgb(238, 238, 238);
+      background-color: var(--themeNavColor1);
       transition: 0.3s ease-in all;
       &:hover {
         .icon {
-          color: rgb(241, 17, 54);
+          color: var(--themeLikeColor);
         }
-        background-color: rgb(247, 247, 247);
+        background-color:var(--themeNavColor2);
       }
     }
   }
@@ -130,7 +182,7 @@
 
 // main page title
 .main {
-  margin: 1rem;
+  margin: 3rem 1rem;
   display: flex;
   justify-content: center;
   
@@ -155,10 +207,9 @@
 
 
 // img 슬라이더
-img-slider {
-  width: 70%;
-  height: 20vw;
-  color: var(--scroll-bar);
+.img-slider {
+  width: 100%;
+  height: 100%;
   display: flex;
   list-style: none;
   overflow-x: scroll;
@@ -175,7 +226,7 @@ img-slider {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--scroll-bar);
+  background: var(--themeScrollBar);
   -webkit-border-radius: 1ex;
 }
 
@@ -184,11 +235,100 @@ img-slider {
 }
 
 li {
-  flex: 0 0 20vw;
-  background: var(--scroll-bar);
-  margin: 0 3rem 0 0;
+  flex: 0 0 18rem;
+  margin: 0 2rem 0 0;
 }
 
 li:last-of-type {
   margin: 0;
+}
+
+
+// Place Card
+.place-card {
+  text-align: left;
+  width: 19em;
+  background-color: var(--themeCardBgColor);
+  border: none;
+  border-radius: 1.3rem;
+  .card-img {
+    overflow: hidden;
+    border-top-right-radius: 1.3rem;
+    border-top-left-radius: 1.3rem;
+
+    &:hover {
+      img {
+        transform: scale(1.2);
+      }
+
+    }
+    img {
+      transition: transform 0.3s;
+      border-top-right-radius: 1.3rem;
+      border-top-left-radius: 1.3rem;
+      width: 100%;
+    }
+  }
+}
+
+.card-content {
+  padding: 0.5rem 1rem;
+  height: 6rem;
+  margin: 1rem;
+}
+
+.box {
+  font-size: 0.9rem;
+  display: inline-block;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  text-align: left;
+  padding: 0.3rem 1rem;
+  border-radius: 0.5rem;
+
+  .category-icon {
+    position: absolute;
+    top: 0.35rem;
+    left: 0.4rem;
+  }
+  .recommend-icon {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.6rem;
+    color: var(--themeRecommendColor);
+  }
+
+  .like-icon {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.6rem;
+    color: var(--themeLikeColor);
+  }
+
+  .category, .recommend, .like {
+    margin-left: 0.9rem;
+  }
+}
+
+
+// Best5
+#best5 {
+  margin: 4rem 4rem;
+}
+
+
+// title
+h3.title {
+  color: var(--themeTitleColor);
+  display: inline-block;
+  background-color: var(--themeTitleBgColor);
+  border-radius: 2rem;
+  padding: 0.8rem 2rem;
+  span {
+    margin-left: 0.4rem;
+  }
+  margin-bottom: 2rem;
+}
+.best-icon {
+  margin-left: -0.4rem;
 }

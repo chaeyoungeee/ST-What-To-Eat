@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import MainNav from "./components/MainNav";
 import Main from "./pages/Main";
 import { motion } from "framer-motion";
+import PlaceCard from "./components/PlaceCard";
+import Best5 from "./pages/Best5";
 
 // react-bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,9 +19,9 @@ function App() {
     <div className="App">
       <MainNav />
       <Main />
-
+      <Best5 />
     </div>
-    
+
   );
 }
 
