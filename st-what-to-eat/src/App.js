@@ -7,8 +7,9 @@ import Main from "./pages/Main";
 import { motion } from "framer-motion";
 import PlaceCard from "./components/PlaceCard";
 import Best5 from "./pages/Best5";
-import Header from "./components/Header";
+import Footer from "./components/Footer";
 import { useScroll } from "framer-motion";
+import ImgUpload from "./components/ImgUpload";
 
 // react-bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -19,11 +20,12 @@ import "./App.scss";
 function App() {
   return (
     <div className="App">
-      <MainNav />
+      <ImgUpload></ImgUpload>
+      {/* <MainNav />
       <Main />
       <Today />
       <Best5 />
-      <Header />
+      <Footer /> */}
     </div>
 
   );

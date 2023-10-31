@@ -37,9 +37,23 @@ app.get('/', (req, res) => {
 app.use('/api/place', require('./routes/place.js'))
 
 
+
+// 이미지 업로드
+// s3
+app.use('/img', require('./routes/placeDB.js'))
+
+
+// export하고 server.js에 import하기
+
+
+
+
+
+
+
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build/index.html'));
 });
-
 
 

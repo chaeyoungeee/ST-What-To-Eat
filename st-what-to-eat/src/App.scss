@@ -319,11 +319,30 @@ li:last-of-type {
 
 
 // Best5
-#best5, #random {
+#best5, #random, #footer {
   padding-top: 3rem;
   margin: 2rem 4rem;
 }
 
+#footer {
+  margin-top: 5rem;
+  background-color: red;
+  height: 20rem;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
+
+  textarea {
+      border: none;
+      width: 92%;
+      height: 8rem;
+      border-radius: 1rem;
+      font-size: 3rem;
+      padding: 1rem;
+      resize: none;
+    }
+}
 
 // title
 h3.title {
