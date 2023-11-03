@@ -17,8 +17,8 @@ let connectDB = require('./database.js')
 let db
 connectDB.then((client) => {
   console.log('DB 연결 성공')
-  app.listen(1400, function () {
-    console.log('listening 1400')
+  app.listen(1300, function () {
+    console.log('listening 1300')
   }); 
 }) 
 .catch((err) => {

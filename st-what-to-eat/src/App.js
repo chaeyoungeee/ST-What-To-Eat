@@ -10,6 +10,7 @@ import Best5 from "./pages/Best5";
 import Footer from "./components/Footer";
 import { useScroll } from "framer-motion";
 import ImgUpload from "./components/ImgUpload";
+import MapNaverDefault from "./components/MapNaverDefault";
 
 // react-bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,10 +18,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Today from "./pages/Random";
 import "./App.scss";
 
-function App() {
+
+function App() {  
+
   return (
     <div className="App">
       <ImgUpload></ImgUpload>
+      {/* <MapNaverDefault></MapNaverDefault> */}
       {/* <MainNav />
       <Main />
       <Today />
