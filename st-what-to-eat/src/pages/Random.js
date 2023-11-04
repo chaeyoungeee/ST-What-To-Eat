@@ -22,7 +22,7 @@ function Random() {
                     Random
                 </h3>
 
-
+                <p>주사위를 눌러 랜덤 메뉴를 추천 받아보세요!</p>
                 <Container className="container mt-3 text-center">
                 <Row data-aos="zoom-in-right" data-aos-duration="300">
                     <Col lg={4} className="d-none d-lg-block">

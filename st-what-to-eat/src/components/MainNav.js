@@ -30,7 +30,7 @@ function MainNav() {
         <motion.div
           whileHover={{ scale: 1.3 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-        <Navbar.Brand href="#home">🍜</Navbar.Brand>
+          <Navbar.Brand onClick={() => { navigate("/") }}>🤔</Navbar.Brand>
         </motion.div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

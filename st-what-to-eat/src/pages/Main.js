@@ -25,7 +25,7 @@ function Main() {
     }, [])
 
     return(
-        <div className="main">
+        <div className="first main">
             <div className="title">
                 <div className={"bottom " + up1}>과기대에서</div>
                 <div className={"bottom " + up2}>오늘🍔</div>
