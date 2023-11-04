@@ -1,15 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+@font-face {
+  font-family: 'gt-flexa';
+  src: url('./font/GT-Flexa/GT-Flexa-Extended-Black-Trial.woff2')
+}
+
+@font-face {
+  font-family: 'ClimateCrisisKR-2010';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/ClimateCrisisKR-2010.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClimateCrisisKR-1979';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/ClimateCrisisKR-1979.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
 :root {
-  --white: #fffdf8;
-    --black: #1c1c1c;
-    --purple: #ab9ff2;
-    --lilac: #e2dffe;
-    --yellow: #ffd13f;
-    --blue: rgb(61, 129, 255);
-    --midnightPurple: #3c315b;
-    --pink: #ff2833;
-    --green: #2ec08b;
+    --white: #ffffff;
+    --light:#f2f2f6;
+    --green: #31df7f;
+    --dark: #727272;
+    --black: #191919;
+    --blue: #1e83ff;
+  
+
+    --lightGreen: rgb(166, 247, 204);
     --moonYellow: #ffffc4;
     --red: #ff4f6d;
     --grey: #e8e6e2;
@@ -36,28 +55,34 @@
     --violet6: #d7cff9;
     --violet8: #aa99ec;
 
-    --themeCardBgColor: var(--light3);
-    --themeCardShadow: var(--light6);
+
+    --themeCardBgColor: var(--white);
 
     --themeTextColor: var(--black);
-    --themeTitleColor: var(--midnightPurple);
-    --themeTitleBgColor: var(--violet4);
+    --themeTitleColor: var(--black);
+    --themeTitleBgColor: var(--green);
     
-    --themeSubNavBgColor: var(--violet1);
-    --themeNavColor1: var(--violet4);
-    --themeNavColor2: var(--violet3);
+    --themeNavHover: var(--lightGreen);
+    --themeSideNav: var(--green);
+    --themeSideNavHover: var(--lightGreen);
 
     --themeFooterBgColor: var(--light3);
-    --themeFooterInputColor: var(--white);
+    --themeFooterInputColor: var(--midnightPurple);
 
-    --themeScrollBarColor: var(--light6);
+    --themeScrollBarColor: var(--lightGreen);
 
     --themeLikeColor: var(--red);
     --themeRecommendColor: var(--blue);
 
 
-    --themeIconColor: var(--light3);
-    --themeIconBgColor: var(--midnightPurple);
+    --themeIconColor: var(--black);
+    --themeIconBgColor: var(--green);
+
+    --boxBorderRadius: 2.5rem;
+}
+
+body {
+    background-color: var(--light);
 }
 
 @keyframes scaleUp {
@@ -81,12 +106,14 @@
 
 
 .App {
+
   font-family: 'IBM Plex Sans KR', sans-serif;
   font-family: 'Manrope', sans-serif;
   // font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
 }
+
 
 
 // down -> up 화면 전환
@@ -113,18 +140,20 @@
 
 // navbar style
 #navbar {
-  padding: 1rem 3rem;
-  background-color: rgba($color: #000000, $alpha: 0) !important;
+  padding: 1rem 2rem;
+  background-color: var(--white) !important;
   --bs-navbar-color: rgba(var(--bs-emphasis-color-rgb), 1);
 
   @media (min-width: 768px) {
     .container, .container-md, .container-sm {
-      max-width: 2000px;
+      max-width: 2010px;
     }
   }
 
+  margin: 2rem 2rem 0rem 2rem;
+  border-radius: var(--boxBorderRadius) var(--boxBorderRadius) 0rem 0rem;
+
   .main-bar {
-    margin-left: 3rem;
     .nav-link {
       width: 9rem;
       transition: 0.3s ease-in all;
@@ -138,7 +167,7 @@
       }
       
       &:hover {
-        background-color: var(--themeNavColor1);
+        background-color: var(--themeNavHover);
     
         .menu-icon {
           animation: scaleUp 0.3s linear forwards;
@@ -167,13 +196,13 @@
       width: 7rem;
     }
     .nav-link {
-      background-color: var(--themeNavColor1);
+      background-color: var(--themeSideNav);
       transition: 0.3s ease-in all;
       &:hover {
         .icon {
           color: var(--themeLikeColor);
         }
-        background-color:var(--themeNavColor2);
+        background-color:var(--themeSideNavHover);
       }
     }
   }
@@ -189,24 +218,28 @@
 
 // main page title
 .main {
-  margin: 3rem 1rem;
+  background-color: white;
+  margin: 0rem 2rem ;
+  border-radius: 0rem 0rem var(--boxBorderRadius) var(--boxBorderRadius);
+  padding: 2rem 1rem 6rem 1rem;
   display: flex;
   justify-content: center;
   
   .title {
+    font-family: ClimateCrisisKR-1979;
     position: relative;
     text-align: left;
       div {
         margin: 0;
         padding: 0;
         line-height: 1.05;
-        font-size: calc(10vw + 2rem)
+        font-size: calc(7vw + 1.5rem)
       }
       img {
-        width: 70%;
+        width: 60%;
         position: absolute;
-        top: calc(9vw + 0.5rem);
-        left: calc(25vw + 0.5rem);
+        top: calc(8vw + 0.5rem);
+        left: calc(30vw + 1.5rem);
       }
   }
 }
@@ -223,6 +256,11 @@
   padding: 20px 0;
   flex: 0 0 600px;
   margin: 0 auto;
+
+  .pl {
+    border-radius: 2rem;
+    border: 1px solid red;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -256,7 +294,7 @@ li:last-of-type {
   text-align: left;
   width: 19em;
   background-color: var(--themeCardBgColor);
-  border: none;
+  border: 0.7rem solid var(--white);
   border-radius: 1.3rem;
   .card-img {
     overflow: hidden;
@@ -276,22 +314,29 @@ li:last-of-type {
       width: 100%;
     }
   }
+
 }
 
 .card-content {
-  padding: 0.5rem 1rem;
-  height: 6rem;
+  padding-top: 0.5rem;
+  height: 5rem;
   margin: 1rem;
+  h5 {
+    // font-family: ClimateCrisisKR-2010;
+    font-weight: 900;
+  }
 }
+
 
 .box {
   font-size: 0.9rem;
   display: inline-block;
   position: relative;
-  background-color: rgb(255, 255, 255);
+  color: var(--white);
+  background-color: var(--black);
   text-align: left;
   padding: 0.3rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
 
   .category-icon {
     position: absolute;
@@ -320,46 +365,75 @@ li:last-of-type {
 
 // Best5
 #best5, #random, #footer {
-  padding-top: 3rem;
-  margin: 2rem 4rem;
+  margin: 2rem;
+  border-radius: var(--boxBorderRadius);
+  padding: 2.5rem;
+}
+
+#best5 {
+  background-color: var(--white);
 }
 
 #footer {
-  margin-top: 5rem;
-  background-color: red;
-  height: 20rem;
+  background-color: var(--black);
   border-radius: 2rem;
-  display: flex;
-  justify-content: center;
-  padding-top: 5rem;
 
-  textarea {
-      border: none;
-      width: 92%;
-      height: 8rem;
-      border-radius: 1rem;
-      font-size: 3rem;
-      padding: 1rem;
-      resize: none;
+  .require {
+    display: flex;
+    justify-content: center;
+    text-align: right;
+    form {
+        width: 100%;
+
+          textarea {
+              border: none;
+              border-radius: 1rem;
+              width: 100%;
+              font-size: 2rem;
+              padding: 1rem;
+              resize: none;
+            }
+          
+            input {
+              margin-top: 1rem;
+              font-weight: 700;
+              width: 10rem;
+              position: inline-block;
+              border-radius: 2rem;
+              background-color: var(--green);
+              border: none;
+              height: 3rem;
+            }                                  
+        }
+  
+  }
+
+  .info {
+    margin: 2rem 0rem 0rem;
+    text-align: right;
+    color: white;
+    .info-icon {
+      margin-right: 0.5rem
     }
+  }
+}
+
+h1 {
+  font-size: 3rem;
 }
 
 // title
 h3.title {
-  color: var(--themeTitleColor);
-  display: inline-block;
-  background-color: var(--themeTitleBgColor);
+  font-family: 'gt-flexa', sans-serif;
+  font-size: 2.5rem;
   border-radius: 2rem;
-  padding: 0.8rem 2rem;
-  margin-bottom: 2rem;
-
   span {
     margin-left: 0.4rem;
   }
 
-  .icon {
-    margin-left: -0.4rem;
-  }
+  // .icon {
+  //   margin-left: -0.4rem;
+  // }
 }
 
 
@@ -368,23 +442,29 @@ h3.title {
 
 
 #random {
+  h3 {
+    color: var(--green);
+  }
+  background-color: var(--black);
   .container {
     max-width: 60rem;
   }
   .button {
     position: relative;
-    background-color: var(--themeIconBgColor);
+    background-color: var(--green);
+    border: 1px solid var(--green);
     width: 6rem;
     height: 6rem;
     border-radius: 4rem;
     display: inline-block;
     margin: 1rem;
+    margin-top: 2rem;
 
     .icon {
       color: var(--themeIconColor);
       position: absolute;
       font-size: 3rem;
-      top: 1.5rem;
+      top: 0.8rem;
       left: 1.5rem;
       transition: 0.4s all;
     }
@@ -423,3 +503,7 @@ h3.title {
 }
 
 
+
+textarea::placeholder {
+  font-family: ClimateCrisisKR-1979;
+}

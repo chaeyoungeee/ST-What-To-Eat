@@ -16,38 +16,44 @@ function Random() {
 
     return (
             <div id="random" className=" text-start">
+                <h1>🙌</h1>
                 <h3 className="title">
-                    <PiBowlFood className="icon"></PiBowlFood>
-                    <span>Random</span>
+                    {/* <PiBowlFood className="icon"></PiBowlFood> */}
+                    Random
                 </h3>
 
 
                 <Container className="container mt-3 text-center">
-                    <Row >
+                <Row data-aos="zoom-in-right" data-aos-duration="300">
                     <Col lg={4} className="d-none d-lg-block">
-                        <div data-aos="zoom-in-right" data-aos-duration="300">
+                        <div>
                             <img className="memoji2" src={memoji2}></img>
                         </div>
                         
                     </Col>
                     <Col lg={4} className="d-flex justify-content-center align-items-center" >
-                            <div data-aos="zoom-in-right" data-aos-duration="300">
+                            <div>
                                 <PlaceCard></PlaceCard>
                             </div>
                         </Col>
                     <Col lg={4} className="d-flex justify-content-center align-items-center">
-                        <div data-aos="zoom-in-left" data-aos-duration="300">
+                        <div>
                             <motion.div className="button retry-btn"
                                 whileHover={{ scale: 1.1 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-                                <TbRotate360 className="icon"></TbRotate360>
+                                {/* <TbRotate360 className="icon"></TbRotate360> */}
+                                <span className="icon">
+                                    🎲
+                                </span>
                             </motion.div>
 
                             <motion.div className="button like-btn"
                                 whileHover={{ scale: 1.1 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-
-                                <AiFillHeart className="icon"></AiFillHeart>
+                                <span className="icon">
+                                    🫰
+                                </span>
+                                {/* <AiFillHeart className="icon"></AiFillHeart> */}
                             </motion.div>
                         </div>
                         </Col>

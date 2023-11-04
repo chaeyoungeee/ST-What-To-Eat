@@ -13,9 +13,10 @@ function Best5() {
     return (
         <div data-aos="flip-up" data-aos-duration="400">
             <div id="best5" className="text-start">
+                <h1>🥳</h1>
                 <h3 className="title">
-                    <FiAward className="icon"></FiAward>
-                    <span>Best 5</span>
+                    {/* <FiAward className="icon"></FiAward> */}
+                    Best 5
                 </h3>
                 <ImageSlider></ImageSlider>
             </div>

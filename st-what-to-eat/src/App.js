@@ -23,13 +23,16 @@ function App() {
 
   return (
     <div className="App">
-      <ImgUpload></ImgUpload>
+      
+
+      {/* <ImgUpload></ImgUpload> */}
       {/* <MapNaverDefault></MapNaverDefault> */}
-      {/* <MainNav />
+      <MainNav />
       <Main />
       <Today />
       <Best5 />
-      <Footer /> */}
+      <Footer />
+
     </div>
 
   );

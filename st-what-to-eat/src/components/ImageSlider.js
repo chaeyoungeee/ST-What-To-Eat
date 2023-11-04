@@ -7,7 +7,7 @@ function ImageSlider() {
                 [1,2,3,4,5].map(()=>{
                     return(
                         <li>
-                            <PlaceCard></PlaceCard>
+                                <PlaceCard className="slider"></PlaceCard>
                         </li>
                     )
                 })

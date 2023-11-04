@@ -25,7 +25,7 @@ function MainNav() {
   let navigate = useNavigate();
 
   return (
-    <Navbar id="navbar" expand="md" className={"bg-body-tertiary start " + fade}>
+    <Navbar id="navbar" expand="md" className={"bg-body-tertiary"}>
       <Container>
         <motion.div
           whileHover={{ scale: 1.3 }}
