@@ -25,7 +25,6 @@ function App() {
 
   return (
     <div className="App">
-      
       <MainNav />
       {/* <ImgUpload></ImgUpload> */}
       {/* <MapNaverDefault></MapNaverDefault> */}

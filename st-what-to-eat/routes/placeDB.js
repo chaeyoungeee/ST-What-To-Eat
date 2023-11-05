@@ -72,7 +72,6 @@ let db;
 connectDB
     .then((client) => {
         console.log("DB(음식적 업로드용) 연결 성공");
-        db = client.db('stplace')
     })
     .catch((err) => {
         console.log(err);

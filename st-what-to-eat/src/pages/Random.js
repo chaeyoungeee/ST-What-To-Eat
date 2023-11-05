@@ -51,7 +51,7 @@ function Random() {
                                 whileHover={{ scale: 1.1 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 10 }}>
                                 <span className="icon">
-                                    🫰
+                                    ❤️
                                 </span>
                                 {/* <AiFillHeart className="icon"></AiFillHeart> */}
                             </motion.div>

@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
 
 // 환경변수 이용
 require('dotenv').config()
@@ -12,7 +13,8 @@ app.use(cors());
 
 
 // db 연결 import
-let connectDB = require('./database.js')
+let connectDB = require('./database.js');
+const { CopyObjectOutputFilterSensitiveLog } = require('@aws-sdk/client-s3');
 
 let db
 connectDB.then((client) => {
@@ -26,15 +28,18 @@ connectDB.then((client) => {
 })
 
 
+// api 분리
+app.use('/login', require('./routes/login.js'))
+app.use('/join', require('./routes/join.js'))
+
+
 app.use(express.static(path.join(__dirname, '/build')));
 
 app.get('/', (req, res) => {
+  console.log(req.user)
   req.sendFile(path.join(__dirname, '/build/index.html'));
 });
 
-
-// api 분리
-app.use('/api/place', require('./routes/place.js'))
 
 
 
@@ -44,12 +49,6 @@ app.use('/img', require('./routes/placeDB.js'))
 
 
 // export하고 server.js에 import하기
-
-
-
-
-
-
 
 
 app.get('*', (req, res) => {
