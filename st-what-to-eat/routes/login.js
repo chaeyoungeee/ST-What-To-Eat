@@ -74,7 +74,6 @@ passport.deserializeUser( async (user, done) => {
 })
 
 
-
 router.post("/", async (req, res, next) => {
   passport.authenticate('local', (err, user, info)=>{
     // db와 검사 후 실행할 코드
@@ -91,6 +90,7 @@ router.post("/", async (req, res, next) => {
     })
   })(req, res, next)
 });
+
 
 module.exports = router;
 

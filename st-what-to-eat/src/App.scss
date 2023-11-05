@@ -192,8 +192,11 @@ body {
         font-size: 1.3rem;
       }
     }
-    .login {
+    .login, .logout {
       width: 7rem;
+    }
+    .logout {
+      background-color: var(--red) !important;
     }
     .nav-link {
       background-color: var(--themeSideNav);

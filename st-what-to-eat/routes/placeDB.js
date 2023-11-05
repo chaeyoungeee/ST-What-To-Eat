@@ -8,6 +8,7 @@ const router = require("express").Router();
 let connectDB = require("../database.js");
 const { default: coor } = require('../src/function/getCoor.js');
 
+
 /**
 let data = {
     category: '',
@@ -100,6 +101,7 @@ const upload = multer({
 
 
 router.post('/upload', async (req, res) => { 
+
     upload.array('img', 5)(req, res, async (err)=>{
         if (err) console.log(err)
         else {

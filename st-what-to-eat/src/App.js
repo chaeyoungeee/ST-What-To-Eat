@@ -13,6 +13,8 @@ import ImgUpload from "./components/ImgUpload";
 import MapNaverDefault from "./components/MapNaverDefault";
 import Login from "./pages/Login"
 import Join from "./pages/Join"
+import { initIsLogin } from "./store";
+import { useDispatch } from "react-redux";
 
 // react-bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -22,7 +24,18 @@ import "./App.scss";
 
 
 function App() {  
+  let dispatch = useDispatch();
 
+  useEffect(()=>{
+    let isLogin
+    console.log(localStorage.getItem("isLogin"));
+    if (localStorage.getItem("isLogin") == "true"){
+      isLogin = true
+    } else {
+      isLogin = false
+    }
+    dispatch((initIsLogin(isLogin)))
+  })
   return (
     <div className="App">
       <MainNav />
@@ -47,8 +60,8 @@ function App() {
           </>
         } />
       </Routes>
-      
       <Footer />
+      <Detail></Detail>
     </div>
 
   );
@@ -57,8 +70,8 @@ function App() {
 function Detail() {
   useEffect(() => {
     axios
-      .get("/api/place")
-      .then((result) => {})
+      .get("/abc")
+      .then((result) => { console.log(result) })
       .catch(() => {});
   });
   return <div>상세 페이지</div>;

@@ -2,14 +2,18 @@ import { Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import navericon from '../imgs/naver-login.png';
 import kakaoicon from '../imgs/kakao-login.png';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
+import { setIsLogin } from "../store";
+import { useDispatch } from "react-redux";
 
 
 function Login() {
     let navigate = useNavigate();
+    let dispatch = useDispatch();
     const [loginMessage, setLoginMessage] = useState('');
     const [formData, setFormData] = useState({ username: '', password: '' });
+
 
 
     const handleInputChange = (e) => {
@@ -26,6 +30,7 @@ function Login() {
                     username: formData.username,
                     password: formData.password
             }).then(()=>{
+                dispatch(setIsLogin(true))
                 navigate('/')
             }
             ).catch((error)=>{
@@ -38,7 +43,6 @@ function Login() {
         <div id="login" className="first center">
             <form onSubmit={handleLogin} className="form-box" action="/login" method="POST">
                 <h2>Login</h2>
-
                 <input type="text" name="username" value={formData.username}
                     onChange={handleInputChange} placeholder="username"/>
                 <input name="password" value={formData.password}
