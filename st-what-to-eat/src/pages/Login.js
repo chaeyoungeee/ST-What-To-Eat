@@ -29,8 +29,9 @@ function Login() {
             await axios.post('/login', {
                     username: formData.username,
                     password: formData.password
-            }).then(()=>{
+            }).then((response)=>{
                 dispatch(setIsLogin(true))
+                alert(response.data.nickname + '님 환영합니다.')
                 navigate('/')
             }
             ).catch((error)=>{
@@ -48,8 +49,7 @@ function Login() {
                 <input name="password" value={formData.password}
                     onChange={handleInputChange} placeholder="password" type="password"/>
 
-                <button type="submit">Login</button>
-                { console.log(formData) }
+                <button className="login" type="submit">Login</button>
 
                 <button onClick={() => { navigate("/join") }}class="join">Join</button>
                 <p>{loginMessage}</p>

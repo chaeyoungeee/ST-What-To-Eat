@@ -15,6 +15,8 @@ import Login from "./pages/Login"
 import Join from "./pages/Join"
 import { initIsLogin } from "./store";
 import { useDispatch } from "react-redux";
+import Category from "./pages/Category";
+import Place from "./pages/Place";
 
 // react-bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -59,9 +61,13 @@ function App() {
             <Join></Join>
           </>
         } />
+        <Route path="/category" element={
+          <>
+            <Place />
+          </>
+        } />
       </Routes>
       <Footer />
-      <Detail></Detail>
     </div>
 
   );

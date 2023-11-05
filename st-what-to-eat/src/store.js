@@ -8,7 +8,6 @@ let isLogin = createSlice({
             return action.payload
         },
         setIsLogin(state, action) {
-            console.log(action.payload)
             localStorage.setItem("isLogin", action.payload)
             return action.payload;
         }

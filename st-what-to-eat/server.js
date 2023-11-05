@@ -130,7 +130,7 @@ app.post("/login", async (req, res, next) => {
     // 로그인 성공
     req.logIn(user, (err) => {
       if (err) return next(err)
-      return res.json('로그인 성공')
+      else return res.json(req.user)
     })
   })(req, res, next)
 });
