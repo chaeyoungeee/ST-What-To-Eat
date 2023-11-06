@@ -22,26 +22,35 @@ function Random() {
                     Random
                 </h3>
 
-                <p>주사위를 눌러 랜덤 메뉴를 추천 받아보세요!</p>
+                <p className="desc">주사위를 눌러 랜덤 메뉴를 추천 받아보세요!</p>
                 <Container className="container mt-3 text-center">
-                <Row data-aos="zoom-in-right" data-aos-duration="300">
-                    <Col lg={4} className="d-none d-lg-block">
+                <Row data-aos="zoom-in-down" data-aos-duration="800">
+                    {/* <Col lg={4} className="d-none d-lg-block">
                         <div>
                             <img className="memoji2" src={memoji2}></img>
                         </div>
                         
-                    </Col>
-                    <Col lg={4} className="d-flex justify-content-center align-items-center" >
+                    </Col> */}
+
+                    <Col xs={12} className="d-flex justify-content-center align-items-center" >
                             <div>
                                 <PlaceCard></PlaceCard>
                             </div>
-                        </Col>
-                    <Col lg={4} className="d-flex justify-content-center align-items-center">
+                    </Col>
+                    <Col xs={12} className="d-flex justify-content-center align-items-center">
+                            <motion.div className="button retry-btn"
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                                <span className="icon">
+                                    🎲
+                                </span>
+                            </motion.div>
+                    </Col>
+                    {/* <Col xs={12} className="d-flex justify-content-center align-items-center">
                         <div>
                             <motion.div className="button retry-btn"
                                 whileHover={{ scale: 1.1 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-                                {/* <TbRotate360 className="icon"></TbRotate360> */}
                                 <span className="icon">
                                     🎲
                                 </span>
@@ -53,10 +62,9 @@ function Random() {
                                 <span className="icon">
                                     ❤️
                                 </span>
-                                {/* <AiFillHeart className="icon"></AiFillHeart> */}
                             </motion.div>
                         </div>
-                        </Col>
+                        </Col> */}
                     </Row>
                 
                 </Container>

@@ -23,14 +23,15 @@
     --white: #ffffff;
     --light:#f2f2f6;
     --green: #31df7f;
-    --dark: #727272;
+    --dark: #9f9f9f;
     --black: #282832;
     --blue: #288cff;
+    --red: #ff4f6d;
   
 
     --lightGreen: rgb(166, 247, 204);
     --moonYellow: #ffffc4;
-    --red: #ff4f6d;
+
     --grey: #e8e6e2;
     --dark1: #161618;
     --dark3: #232326;
@@ -110,7 +111,7 @@ body {
   font-family: 'IBM Plex Sans KR', sans-serif;
   font-family: 'Manrope', sans-serif;
   // font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
 }
 
@@ -160,9 +161,9 @@ body {
       
       .menu-icon {
         position: relative;
-        bottom: 0.1rem;
+        bottom: .1rem;
         font-size: 0;
-        margin-right: 0.3rem;
+        margin-right: .3rem;
         transition: 0.3s ease-in all;
       }
       
@@ -188,7 +189,7 @@ body {
       .icon {
         transition: 0.3s ease-in all;
         position: relative;
-        bottom: 0.1rem;
+        bottom: .1rem;
         font-size: 1.3rem;
       }
     }
@@ -212,8 +213,8 @@ body {
 
   .nav-link {
     border-radius: 1.5rem;
-    padding: 0.8rem;
-    margin: 0.3rem 0.5rem;    
+    padding: .8rem;
+    margin: .3rem .5rem;    
   }
 }
 
@@ -222,9 +223,11 @@ body {
 // main page title
 .main {
   background-color: white;
-
+  height: 81vh;
   display: flex;
   justify-content: center;
+  display: flex;
+  align-items: center;
   
   .title {
     font-family: ClimateCrisisKR-1979;
@@ -239,7 +242,7 @@ body {
       img {
         width: 60%;
         position: absolute;
-        top: calc(8vw + 0.5rem);
+        top: calc(8vw + .5rem);
         left: calc(30vw + 1.5rem);
       }
   }
@@ -249,6 +252,8 @@ body {
 
 // img 슬라이더
 .img-slider {
+  position: relative;
+  top: -2rem;
   width: 100%;
   height: 100%;
   display: flex;
@@ -257,6 +262,7 @@ body {
   padding: 20px 0;
   flex: 0 0 600px;
   margin: 0 auto;
+
 
   .pl {
     border-radius: 2rem;
@@ -295,7 +301,7 @@ li:last-of-type {
   text-align: left;
   width: 19em;
   background-color: var(--themeCardBgColor);
-  border: 0.7rem solid var(--white);
+  border: .7rem solid var(--white);
   border-radius: 1.3rem;
   .card-img {
     overflow: hidden;
@@ -319,7 +325,7 @@ li:last-of-type {
 }
 
 .card-content {
-  padding-top: 0.5rem;
+  padding-top: .5rem;
   height: 5rem;
   margin: 1rem;
   h5 {
@@ -330,52 +336,61 @@ li:last-of-type {
 
 
 .box {
-  font-size: 0.9rem;
+  font-size: .9rem;
   display: inline-block;
   position: relative;
   color: var(--white);
   background-color: var(--black);
   text-align: left;
-  padding: 0.3rem 1rem;
+  padding: .3rem 1rem;
   border-radius: 1rem;
 
   .category-icon {
     position: absolute;
-    top: 0.35rem;
-    left: 0.4rem;
+    top: .35rem;
+    left: .4rem;
   }
   .recommend-icon {
     position: absolute;
-    top: 0.5rem;
-    left: 0.6rem;
+    top: .5rem;
+    left: .6rem;
     color: var(--themeRecommendColor);
   }
 
   .like-icon {
     position: absolute;
-    top: 0.5rem;
-    left: 0.6rem;
+    top: .5rem;
+    left: .6rem;
     color: var(--themeLikeColor);
   }
 
   .category, .recommend, .like {
-    margin-left: 0.9rem;
+    margin-left: .9rem;
   }
 }
 
 
 // Best5
-#best5, #random, #footer {
-  margin: 2rem;
+#best5, #random, #like, #footer {
+  margin: 2rem 2rem 0rem;
   border-radius: var(--boxBorderRadius);
-  padding: 2.5rem;
+  padding: 3rem 4rem;
 }
 
 #best5 {
-  background-color: var(--white);
+  background-color: var(--black);
+  h3 {
+    color: var(--green);
+  }
+  p {
+    color: var(--white);
+  }
 }
 
+
+
 #footer {
+  margin-bottom: 2rem;
   background-color: var(--black);
   border-radius: 2rem;
 
@@ -415,7 +430,7 @@ li:last-of-type {
     text-align: right;
     color: white;
     .info-icon {
-      margin-right: 0.5rem
+      margin-right: .5rem
     }
   }
 }
@@ -424,13 +439,16 @@ h1 {
   font-size: 3rem;
 }
 
+h1 {
+  margin: 0;
+}
 // title
 h3.title {
   font-family: 'gt-flexa', sans-serif;
   font-size: 2.5rem;
   border-radius: 2rem;
   span {
-    margin-left: 0.4rem;
+    margin-left: .4rem;
   }
 
   // .icon {
@@ -442,17 +460,20 @@ h3.title {
 
 // Random
 
+.desc {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
 
-#random {
+#random, #like {
+  min-height: 50rem;
+  position: relative;
   p {
-    color: var(--white);
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
+    color: var(--black);
   }
   h3 {
-    color: var(--green);
+    color: var(--black);
   }
-  background-color: var(--black);
   .container {
     max-width: 60rem;
   }
@@ -464,25 +485,29 @@ h3.title {
     height: 6rem;
     border-radius: 4rem;
     display: inline-block;
-    margin: 1rem;
-    margin-top: 2rem;
-
+    margin-top: 1.5rem;
     .icon {
       color: var(--themeIconColor);
       position: absolute;
       font-size: 3rem;
-      top: 0.8rem;
+      top: .8rem;
       left: 1.4rem;
       transition: 0.4s all;
     }
   }
   .memoji2 {
     position: absolute;
-    width: 90%;
-    max-width: 18rem;
-    left: 0rem;
-    top: 1.5rem;
+    width: calc(15vw + 1.5rem);
+    left: .5rem;
+    bottom: .5rem;
   }
+  // .memoji3 {
+  //   position: absolute;
+  //   width: calc(17vw + 2rem);
+  //   right: -1.5rem;
+  //   bottom: 2rem;
+  // }
+
 }
 
 .retry-btn {
@@ -501,6 +526,13 @@ h3.title {
     }
 }
 
+#like {
+  background-color: var(--lightGreen) !important;
+  .title, .desc {
+    color: var(--black);
+  }
+  margin-left: .25rem;
+}
 
 // flex 중앙 정렬
 
@@ -528,8 +560,8 @@ textarea::placeholder {
     }
     input, button {
       font-weight: 700;
-      margin: 0.3rem;
-      padding: 0.5rem 1rem;
+      margin: .3rem;
+      padding: .5rem 1rem;
       border-radius: 2rem;
       border: 1px solid var(--dark);
     }
@@ -546,7 +578,7 @@ textarea::placeholder {
       color: var(--white)
     }
     p {
-      margin-top: 0.8rem;
+      margin-top: .8rem;
     }
 
     .social-login {
@@ -576,6 +608,8 @@ textarea::placeholder {
 #place {
   padding: 2rem 7rem;
   .title {
+    overflow: hidden;
+    white-space: nowrap;
     font-size: 2.2rem;
     font-family: ClimateCrisisKR-1979;
     margin-bottom: 2rem;
@@ -583,18 +617,12 @@ textarea::placeholder {
   .row {
     --bs-gutter-x: 0 !important;
   }
-  .p-right {
-    padding-right: 0.5rem;
-  }
-
-  .p-left {
-    padding-left: 0.5rem;
-  }
 
   .col-box {
-    margin-bottom: 1rem;
+    padding: .5rem;
   }
   .menu {
+    margin-top: .5rem;
     // font-family: 'apple sd gothic neo', san;
     background-color: var(--black);
     color: var(--white);
@@ -602,22 +630,30 @@ textarea::placeholder {
     border: 1px solid var(--dark);
     padding: 2.5rem;
     h3 {
-      font-size: 1.8rem;
+      color: var(--green);
+      font-size: 1.9rem;
       font-weight: 700;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.2rem;
+      font-family: gt-flexa;
       // font-family: ClimateCrisisKR-1979;
     }
     .row {
       align-items: center;
-      margin-bottom: 0.5rem;
     }
     .menu-name {
       overflow: hidden;
       white-space: nowrap;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
     .menu-price {
-      font-size: 1.1rem;
+      font-size: 1rem;
+    }
+
+    .menu-table :nth-child(2n+1) {
+      padding-right: 1rem;
+    }
+    .menu-table :nth-child(2n) {
+      padding-left: 1rem;
     }
   }
   .img {
@@ -635,7 +671,7 @@ textarea::placeholder {
         align-items: center;
 
         p {
-          margin-top: 0.5rem;
+          margin-top: .5rem;
           font-size: 1.3rem;
         }
 
@@ -646,8 +682,22 @@ textarea::placeholder {
             width: 6rem;
             height: 6rem;
             font-size: 3rem;
-
+            transition: 0.3s ease-in background-color;
+            
+              &:hover {
+                background-color: var(--lightGreen);
+                .recommend-icon {
+                  color: var(--blue)
+                }
+                .unrecommend-icon {
+                  color: var(--dark)
+                }
+                .like-icon {
+                  color: var(--red);
+                }
+              }
             .recommend-icon {
+              transition: 0.3s ease-in color;
               position: absolute;
               top: 1.5rem;
               left: 1.5rem;
@@ -656,8 +706,10 @@ textarea::placeholder {
               position: absolute;
               top: 1.7rem;
               left: 1.5rem;
+              transition: 0.3s ease-in color;
             }
             .like-icon {
+              transition: 0.3s ease-in color;
               position: absolute;
               top: 1.65rem;
               left: 1.5rem;
@@ -668,15 +720,42 @@ textarea::placeholder {
 
 }
 
-
-@media all and (max-width: 768px) {
-  #place {
-    padding: 2rem 4rem !important;
+#random {
+  background-color: var(--white);
+  .place-card {
+    color: var(--white);
+    border: .7rem solid var(--black);
+    background-color: var(--black);
+    .box {
+      background-color: var(--white);
+      color: var(--black);
+    }
   }
 
-  .p-right,
-  .p-left {
-    padding: 0 !important;
+  margin-right: .25rem;
+}
+
+@media (max-width: 768px) {
+  .detail {
+    display: none !important;
+  }
+  #random, #like {
+      margin: 2rem 2rem 0rem !important;
+  }
+  .main {
+    height: 100% !important;
+  }
+
+  #place {
+    padding: 2rem 3rem !important;
+    .title {
+      font-size: 1.7rem !important;
+    }
+  }
+
+
+  .img-box {
+    height: 100% !important;
   }
 
   .icons {
@@ -685,6 +764,7 @@ textarea::placeholder {
       width: 4.5rem !important;
       height: 4.5rem !important;
       font-size: 2rem !important;
+
 
       .recommend-icon {
         top: 1.25rem !important;
@@ -701,5 +781,96 @@ textarea::placeholder {
         left: 1.25rem !important;
       }
     }
+  }
+}
+
+
+@media screen and (max-width: 992px) {
+    .menu-table :nth-child(2n+1) {
+        padding-right: 0 !important;
+    }
+    .menu-table :nth-child(2n) {
+      padding-left: 0 !important;
+    }
+}
+
+.like-item {
+  margin-bottom: 1.5rem;
+  h2 {
+    display: inline-block;
+    position: relative;
+    top: .4rem;
+    left: -0.6rem;
+    font-size: 3rem;
+  }
+  .title {
+    align-self: center;
+  }
+  h4 {
+    margin: 0 !important;
+    font-weight: 800;
+  }
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem 2rem 1.3em;
+
+  .detail {
+
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    flex-grow: 0;
+    
+    div {
+        white-space: nowrap;
+        padding: .5rem 1.5rem;
+        color: white;
+        border-radius: 2rem;
+        background-color: var(--black);
+    }
+  }
+}
+
+
+.comment {
+  p, h5 {
+    margin: 0;
+    padding: 0;
+  }
+    background-color: var(--white);
+    margin: 2rem 2rem 0rem;
+    border-radius: var(--boxBorderRadius);
+    padding: 2rem 2.5rem;
+
+    .reply-comment {
+          background-color: var(--light);
+          margin-top: 1rem;
+          border-radius: 1.5rem;
+          padding: 1rem 1.5rem;
+          .comment-menu div {
+            background-color: var(--white) !important;
+          }
+    }
+}
+
+.comment-menu {
+  height: 2rem;
+  text-align: end;
+  div {
+    padding: 0rem 1rem;
+    background-color: var(--light);
+  }
+  div:first-of-type {
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+  }
+  div:last-of-type {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+  .icon {
+    top: .15rem;
+    position: relative;
   }
 }

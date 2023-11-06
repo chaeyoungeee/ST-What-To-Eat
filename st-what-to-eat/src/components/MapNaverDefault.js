@@ -25,7 +25,7 @@ const MapNaverDefault = (props) => {
 
     return (
         <div>
-            <div ref={mapElement} style={{ width: '100%', height: '23rem', borderRadius: '2rem' }} />
+            <div className='map' ref={mapElement} style={{ width: '100%', height: props.height, borderRadius: '2rem' }} />
         </div>
     );
 };

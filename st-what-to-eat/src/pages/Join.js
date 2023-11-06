@@ -1,7 +1,19 @@
+import { useEffect, useState } from "react";
+
 function Join() {
+    let [fade, setFade] = useState('')
+
+    useEffect(() => {
+        setTimeout(() => { setFade('end') }, 300)
+
+        return () => {
+            setFade('')
+        }
+    }, [])
+
     return (
         <div id="join" className="first center">
-            <form class="form-box" action="/join" method="POST">
+            <form className={"form-box start " + fade} action="/join" method="POST">
                 <h2>Join</h2>
                 <input name="nickname" placeholder="nickname" />
                 <input name="username" placeholder="username" />

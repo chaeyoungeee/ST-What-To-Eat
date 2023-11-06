@@ -17,11 +17,13 @@ import { initIsLogin } from "./store";
 import { useDispatch } from "react-redux";
 import Category from "./pages/Category";
 import Place from "./pages/Place";
+import { Row, Col } from "react-bootstrap";
 
 // react-bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Today from "./pages/Random";
+import Like from "./pages/Like";
+import Random from "./pages/Random";
 import "./App.scss";
 
 
@@ -46,9 +48,18 @@ function App() {
       <Routes>
         <Route path="/" element={
             <>
+
               <Main />
-              <Today />
-              <Best5 />
+
+            <Best5 />
+            <Row>
+                <Col md={6}>
+                  <Random />
+                </Col>
+              <Col md={6}>
+                <Like/>
+              </Col>
+              </Row>
             </>
         }/>
         <Route path="/login" element={

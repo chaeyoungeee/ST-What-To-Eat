@@ -15,6 +15,17 @@ function Login() {
     const [formData, setFormData] = useState({ username: '', password: '' });
 
 
+    let [fade, setFade] = useState('')
+
+    useEffect(() => {
+        setTimeout(() => { setFade('end') }, 300)
+
+        return () => {
+            setFade('')
+        }
+    }, [])
+
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -42,7 +53,7 @@ function Login() {
 
     return (
         <div id="login" className="first center">
-            <form onSubmit={handleLogin} className="form-box" action="/login" method="POST">
+            <form onSubmit={handleLogin} className={"form-box start " + fade} action="/login" method="POST">
                 <h2>Login</h2>
                 <input type="text" name="username" value={formData.username}
                     onChange={handleInputChange} placeholder="username"/>

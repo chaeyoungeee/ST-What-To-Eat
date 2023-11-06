@@ -1,8 +1,24 @@
 import MapNaverDefault from "../components/MapNaverDefault";
 import { Row, Col } from "react-bootstrap";
-import { AiFillLike, AiFillDislike, AiFillHeart } from "react-icons/ai"
+import { AiFillLike, AiFillDislike, AiFillHeart, AiOutlineLike } from "react-icons/ai"
+import { RiDeleteBinLine, RiEdit2Line, RiChat1Line } from "react-icons/ri"
+import { IoChatboxOutline } from "react-icons/io5"
+import { BiLike, BiChat } from "react-icons/bi"
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import Comment from "../components/Comment";
 
 function Place() {
+    let [fade, setFade] = useState('')
+
+    useEffect(() => {
+      setTimeout(() => { setFade('end') }, 300)
+
+      return () => {
+        setFade('')
+      }
+    }, [])
+
     let data = {
         category: '파스타',
         name: '리틀파스타 공릉본점',
@@ -28,13 +44,56 @@ function Place() {
         imgs: ['https://placephotosbucket.s3.ap-northeast-2.amazonaws.com/1698915873504', 'https://placephotosbucket.s3.ap-northeast-2.amazonaws.com/1698915873513']
     }
 
+    let [imgSrc, setImgSrc] = useState(data['imgs'][0])
+
+    useState(()=>{
+        let i = 1;
+        setInterval(()=>{
+            setImgSrc(data['imgs'][i])
+            i++;
+            if (i >= data['imgs'].length) i = 0
+        }, 2500)
+    })
+
     return(
+        <div>
         <div id="place" className="first">
+            <div className={"start " + fade}>
             <div className="text-start">
                 <h1>🍜</h1>
                 <h3 className="title">{data.name}</h3>
             </div>
-            <Row>
+                    <Row>
+                        <Col md={6} className="col-box">
+                            <MapNaverDefault height={'20rem'} coord={data.coord}></MapNaverDefault>
+                        </Col>
+                        
+                        <Col md={6} className="col-box img-box" style={{ overflow: 'hidden' }}>
+                            <img className="img" style={{ height: '20rem' }} src={imgSrc}></img>
+                        </Col>
+
+                        <Col className="col-box menu text-start" md={12}>
+                            <h2>🥳</h2>
+                            <h3>Menu</h3>
+                            <Row className="menu-table">
+                            {
+                                data.menu.map(function (menu) {
+                                    return (
+                                        <Col lg={6}>
+                                            <Row>
+                                                <Col className="menu-name" xs={9}>{menu.name}</Col>
+                                                <Col xs={3} className="menu-price text-end">{menu.price}</Col>
+                                            </Row>
+                                        </Col>
+                                    )
+                                })
+                            }
+                            </Row>
+                        </Col>
+                    </Row>
+
+
+            {/* <Row>
                 <Col md={6} className="p-right">
                     <Row>
                         <Col className="col-box" xs={12}>
@@ -52,7 +111,7 @@ function Place() {
                         </Col>
                         <Col className="col-box menu text-start" xs={12} style={{ height: '18rem'}}>
                             <h2>🥳</h2>
-                            <h3>대표 메뉴</h3>
+                            <h3>Menu</h3>
                             {
                             data.menu.map(function(menu){
                                 return(
@@ -66,28 +125,51 @@ function Place() {
                         </Col>
                     </Row>
                 </Col>
-            </Row>
+            </Row> */}
 
             <Row className="icons">
                 <Col>
-                    <div className="icon">
+                    <motion.div
+                            className='icon'
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                         <AiFillLike className="recommend-icon"></AiFillLike>
-                    </div>
+                    </motion.div>
                     <p>100</p>
                 </Col>
                 <Col>
-                    <div className="icon">
+                    <motion.div
+                        className='icon'
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                         <AiFillDislike className="unrecommend-icon"></AiFillDislike>
-                    </div>
+                    </motion.div>
                     <p>5</p>
                 </Col>
                 <Col>
-                    <div className="icon">
+                    <motion.div
+                        className='icon'
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                         <AiFillHeart className="like-icon"></AiFillHeart>
-                    </div>
+                    </motion.div>
                     <p>10</p>
                 </Col>
             </Row>
+                </div>
+        </div>
+        
+
+        <div className="text-start">
+            <Comment type='comment' />
+                <Comment type='comment' />
+                <Comment type='comment' />
+                <Comment type='comment' />
+        </div>
+
         </div>
     )
 }
