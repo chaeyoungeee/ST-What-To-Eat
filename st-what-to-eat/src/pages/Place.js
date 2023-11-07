@@ -7,6 +7,7 @@ import { BiLike, BiChat } from "react-icons/bi"
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Comment from "../components/Comment";
+import CommentInput from "../components/CommentInput";
 
 function Place() {
     let [fade, setFade] = useState('')
@@ -26,11 +27,11 @@ function Place() {
         unrecommend: 0,
         like: 0,
         link: '',
-        coord: [37.629665, 127.075765],
+        coord: [37.6220598, 127.07962],
         menu: [
             {
-                name: '청양 가리비&날치알 파스타',
-                price: '15900'
+                name: '페페그라노',
+                price: 17500
             },
             {
                 name: '봉골레 파스타',
@@ -164,10 +165,8 @@ function Place() {
         
 
         <div className="text-start">
-            <Comment type='comment' />
-                <Comment type='comment' />
-                <Comment type='comment' />
-                <Comment type='comment' />
+            <CommentInput type='comment' />
+            <Comment />
         </div>
 
         </div>

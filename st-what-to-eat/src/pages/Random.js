@@ -1,18 +1,34 @@
-import { PiBowlFood } from "react-icons/pi";
-import { TbRotate360 } from "react-icons/tb"
-import memoji2 from "../imgs/memoji2.png";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import PlaceCard from "../components/PlaceCard";
 import { Row, Col, Container } from "react-bootstrap";
-import { AiFillHeart } from "react-icons/ai"
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 function Random() {
+
     useEffect(() => {
         AOS.init();
     })
+    
+    let [fade, setFade] = useState('end')
+
+    let places = useSelector((state) => { return state.places });
+    let sortedPlaces = [...places]
+    sortedPlaces = sortedPlaces.sort(()=> Math.random() - 0.5)
+
+   
+
+    let diceClickHandle = () => {
+        sortedPlaces = sortedPlaces.sort(() => Math.random() - 0.5)
+        setFade('')
+        setTimeout(() => { setFade('end') }, 300);
+    }
+
+
+
+
 
     return (
             <div id="random" className=" text-start">
@@ -33,12 +49,12 @@ function Random() {
                     </Col> */}
 
                     <Col xs={12} className="d-flex justify-content-center align-items-center" >
-                            <div>
-                                <PlaceCard></PlaceCard>
+                            <div className={"start " + fade}>
+                                <PlaceCard place={sortedPlaces[0]}></PlaceCard>
                             </div>
                     </Col>
                     <Col xs={12} className="d-flex justify-content-center align-items-center">
-                            <motion.div className="button retry-btn"
+                            <motion.div onClick={diceClickHandle} className="button retry-btn"
                                 whileHover={{ scale: 1.1 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 10 }}>
                                 <span className="icon">

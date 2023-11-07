@@ -11,10 +11,10 @@ function LikeItem(props) {
     return (
         <div className="like-item" data-aos="zoom-in-down" data-aos-duration="800">
             <h2>{rank[props.rank]}</h2>
-            <span>❤️  </span><span>+130</span>
+            <span>❤️  </span><span>+{props.place.like}</span>
             <Row>
                 <Col md={8} className="title">
-                    <h4>쪼매 매운 떡볶이 공릉</h4>
+                    <h4>{props.place.name}</h4>
                 </Col>
                 <Col md={4} className="detail">
                     <div>자세히 보기</div>

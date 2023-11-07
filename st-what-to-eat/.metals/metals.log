@@ -11,3 +11,18 @@
 정보: Unsupported notification method: $/setTrace
 10월 29, 2023 5:27:36 오전 org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
 정보: Unsupported notification method: $/setTrace
+2023.10.29 15:19:10 INFO  Started: Metals version 1.1.0 in folders '/Users/limchaeyoung/Documents/GitHub/ST-What-To-Eat/st-what-to-eat' for client Visual Studio Code 1.83.1.
+2023.10.29 15:19:16 WARN  Build server is not auto-connectable.
+2023.10.29 15:19:16 WARN  no build tool detected in workspace '/Users/limchaeyoung/Documents/GitHub/ST-What-To-Eat/st-what-to-eat'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2023.10.29 15:57:05 INFO  Shutting down server
+2023.10.29 15:57:05 INFO  shutting down Metals
+2023.10.29 15:57:05 INFO  Exiting server
+2023.11.05 20:01:10 INFO  Started: Metals version 1.1.0 in folders '/Users/limchaeyoung/Documents/GitHub/ST-What-To-Eat/st-what-to-eat' for client Visual Studio Code 1.84.0.
+2023.11.05 20:01:13 WARN  Build server is not auto-connectable.
+2023.11.05 20:01:13 WARN  no build tool detected in workspace '/Users/limchaeyoung/Documents/GitHub/ST-What-To-Eat/st-what-to-eat'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2023.11.06 03:21:50 INFO  Started: Metals version 1.1.0 in folders '/Users/limchaeyoung/Documents/GitHub/ST-What-To-Eat/st-what-to-eat' for client Visual Studio Code 1.84.0.
+2023.11.06 03:21:53 WARN  Build server is not auto-connectable.
+2023.11.06 03:21:53 WARN  no build tool detected in workspace '/Users/limchaeyoung/Documents/GitHub/ST-What-To-Eat/st-what-to-eat'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2023.11.06 12:44:57 INFO  Shutting down server
+2023.11.06 12:44:57 INFO  shutting down Metals
+2023.11.06 12:44:57 INFO  Exiting server

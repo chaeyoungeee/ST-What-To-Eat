@@ -14,10 +14,10 @@ import MapNaverDefault from "./components/MapNaverDefault";
 import Login from "./pages/Login"
 import Join from "./pages/Join"
 import { initIsLogin } from "./store";
-import { useDispatch } from "react-redux";
 import Category from "./pages/Category";
 import Place from "./pages/Place";
 import { Row, Col } from "react-bootstrap";
+import Test from "./pages/Test";
 
 // react-bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -25,6 +25,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Like from "./pages/Like";
 import Random from "./pages/Random";
 import "./App.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { initPlaces } from "./store";
 
 
 function App() {  
@@ -32,7 +34,6 @@ function App() {
 
   useEffect(()=>{
     let isLogin
-    console.log(localStorage.getItem("isLogin"));
     if (localStorage.getItem("isLogin") == "true"){
       isLogin = true
     } else {
@@ -40,17 +41,35 @@ function App() {
     }
     dispatch((initIsLogin(isLogin)))
   })
+
+ 
+
+  useEffect(()=>{
+    axios.get('/place').then((res)=>{
+      dispatch(initPlaces(res.data))
+    }, [])
+  })
+
   return (
     <div className="App">
+      {/* 음식점 업로드용
+      <ImgUpload></ImgUpload>
+      {
+        places.slice(0).reverse().map(function(a){
+          
+          return <Test data={a}/>
+        })
+      } */}
+      
+
       <MainNav />
-      {/* <ImgUpload></ImgUpload> */}
-      {/* <MapNaverDefault></MapNaverDefault> */}
+
+      
+
       <Routes>
         <Route path="/" element={
             <>
-
-              <Main />
-
+            <Main />
             <Best5 />
             <Row>
                 <Col md={6}>

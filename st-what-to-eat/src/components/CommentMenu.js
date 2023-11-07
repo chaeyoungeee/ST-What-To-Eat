@@ -7,7 +7,7 @@ import { BiLike, BiChat } from "react-icons/bi"
 function CommentMenu(props) {
     // props: type, user_id, current_login_id
     return (
-        <Col className="d-flex justify-content-end">
+        <Col xs={6} className="d-flex justify-content-end">
             {/* <p>답글</p>
                     <p>추천</p>
                     <p>수정/삭제</p> */}

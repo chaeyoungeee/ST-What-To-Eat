@@ -19,8 +19,9 @@ const { CopyObjectOutputFilterSennsitiveLog } = require('@aws-sdk/client-s3');
 let db
 connectDB.then((client) => {
   console.log('DB 연결 성공')
-  app.listen(1302, function () {
+  app.listen(1303, function () {
     console.log('listening 1300')
+    db = client.db('stplace');
   }); 
 }) 
 .catch((err) => {
@@ -63,18 +64,6 @@ app.use(session({
 }))
 
 app.use(passport.session())
-
-
-// db 연결
-
-connectDB
-  .then((client) => {
-    console.log("DB 연결 성공");
-    db = client.db('stplace');
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 
 
@@ -154,6 +143,28 @@ app.get("/logout", (req, res, next)=>{
 // 이미지 업로드
 // s3
 app.use('/img', require('./routes/placeDB.js'))
+
+
+
+
+app.get('/place', async (req, res)=>{
+  let data = await db.collection('place').find().toArray()
+
+  /* recommend, unrecommend, like값 조작 
+  const places = await db.collection('place').find().toArray();
+
+  places.forEach(async (place) => {
+    const recommend = 5 + Math.floor(Math.random() * 100);
+    const unrecommend =  Math.floor(Math.random() * 7);
+    const like = 5 + Math.floor(Math.random() * 70);
+    await db.collection('place').updateOne({ _id: place._id }, { $set: { recommend, unrecommend, like } });
+  });
+  */
+
+  res.json(data)
+})
+
+
 
 
 // export하고 server.js에 import하기

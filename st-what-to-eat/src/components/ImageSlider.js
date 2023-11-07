@@ -1,13 +1,18 @@
 import PlaceCard from "./PlaceCard";
+import { useSelector } from "react-redux";
 
 function ImageSlider() {
+    let places = useSelector((state) => { return state.places });
+    let sortedPlaces = [...places]
+    sortedPlaces = sortedPlaces.sort((a, b) => { return b.recommend - a.recommend })
+
     return(
         <ul className="img-slider">
             {
-                [1,2,3,4,5].map(()=>{
+                sortedPlaces.slice(0, 5).map((place)=>{
                     return(
                         <li>
-                                <PlaceCard className="slider"></PlaceCard>
+                                <PlaceCard place={place}   className="slider"></PlaceCard>
                         </li>
                     )
                 })

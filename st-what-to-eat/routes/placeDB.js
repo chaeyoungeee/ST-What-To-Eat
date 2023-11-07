@@ -10,28 +10,34 @@ const { default: coor } = require('../src/function/getCoor.js');
 
 
 /**
+
 let data = {
-    category: '',
-    name: '',
+    category: 
+    name: 
     recommend: 0,
     unrecommend: 0,
     like: 0,
-    link: '',
-    map_link: '',
-    menu: [
+    link: 
+    coord: 
+    menus: [
         {
-            name: '',
-            photo: ''
+            name: 
+            price: 
         },
         {
-            name: '',
-            photo: ''
+            name:
+            price:
         },
         {
-            name: '',
-            photo: ''
-        }
-    ]
+            name:
+            price:
+        },
+        {
+            name:
+            price:
+        },
+    ],
+    imgs: []
 }
  */
 
@@ -39,28 +45,41 @@ let data = {
 
 
 let data = {
-    category: '파스타',
-    name: '리틀파스타 공릉본점',
+    category: '일식',
+    name: '아소코',
     recommend: 0,
     unrecommend: 0,
     like: 0,
-    link: '',
-    coor: (37.629665, 127.075765),
-    menu: [
+    link: 'https://map.naver.com/p/search/%EA%B3%B5%EB%A6%89%20%EC%B4%88%EB%B0%A5/place/1295848493?c=14.00,0,0,0,dh&placePath=%3Fentry%253Dbmp',
+    coord: [37.6246215, 127.0766011],
+    menus: [
         {
-            name: '청양 가리비&날치알 파스타대표',
-            price: '15900'
+            name: '하와이안롤카츠',
+            price:  13000
         },
         {
-            name: '봉골레 파스타',
-            price: '13900'
+            name: '연어덮밥',
+            price: 13000
         },
         {
-            name: '마르게리따 피자',
-            price: '17900'
+            name: '항정살덮밥',
+            price: 9500
+        },
+        {
+            name: '스키야키덮밥',
+            price: 10500
+        },
+        {
+            name: '스키야키우동',
+            price: 10500
+        },
+        {
+            name: '볶음우동',
+            price: 10500
         }
+
     ],
-    photo: []
+    imgs: []
 }
 
 
@@ -73,6 +92,7 @@ let db;
 connectDB
     .then((client) => {
         console.log("DB(음식적 업로드용) 연결 성공");
+        db = client.db('stplace')
     })
     .catch((err) => {
         console.log(err);
@@ -102,17 +122,19 @@ const upload = multer({
 
 router.post('/upload', async (req, res) => { 
 
-    upload.array('img', 5)(req, res, async (err)=>{
+    upload.array('img', 3)(req, res, async (err)=>{
         if (err) console.log(err)
         else {
             console.log(req.files)
             for (file of req.files) {
-                data['photo'].push(file.location)
+                data['imgs'].push(file.location)
             }
         }
         console.log(data);
 
-        // let d = db.collection('place').insertOne(data)
+        let d = db.collection('place').insertOne(data)
+
+        res.redirect('/');
     })
 
 })

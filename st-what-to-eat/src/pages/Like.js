@@ -9,11 +9,16 @@ import { Row, Col, Container } from "react-bootstrap";
 import { AiFillHeart } from "react-icons/ai"
 import { motion } from "framer-motion";
 import LikeItem from "../components/LikeItem";
+import { useSelector } from "react-redux";
 
 function Like() {
     useEffect(() => {
         AOS.init();
     })
+
+    let places = useSelector((state) => { return state.places });
+    let sortedPlaces = [...places]
+    sortedPlaces = sortedPlaces.sort((a, b) => { return b.like - a.like })
 
     return (
         <div id="like" className=" text-start">
@@ -33,10 +38,13 @@ function Like() {
                     </Col>
                 </Row>
                 </Container> */}
-
-                <LikeItem rank={0}></LikeItem>
-                <LikeItem rank={1}></LikeItem>
-                <LikeItem rank={2}></LikeItem>
+                {
+                sortedPlaces.slice(0, 3).map((place, i)=>{
+                    return(
+                        <LikeItem rank={i} place={place}></LikeItem>
+                    )
+                })
+                }
 
             {/* <div>
                 <img className="memoji3" src='https://placephotosbucket.s3.ap-northeast-2.amazonaws.com/memoji3.png'></img>

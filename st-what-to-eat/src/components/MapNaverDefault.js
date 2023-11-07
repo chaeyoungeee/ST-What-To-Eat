@@ -3,7 +3,6 @@ import { useEffect, useRef } from 'react';
 const MapNaverDefault = (props) => {
     const mapElement = useRef(null);
     const { naver } = window;
-    console.log(props.coord)
 
     useEffect(() => {
         if (!mapElement.current || !naver) return;

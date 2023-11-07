@@ -4,8 +4,7 @@ import { VscCircleFilled } from "react-icons/vsc"
 import { motion } from "framer-motion";
 import { AiFillLike, AiTwotoneHeart } from "react-icons/ai"
 
-function PlaceCard() {
-
+function PlaceCard(props) {
 
     return (
         <motion.div
@@ -14,10 +13,10 @@ function PlaceCard() {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                 <div className='card-img'>
-                    <img src={food}></img>
+                <img src={props.place != undefined ? props.place['imgs'][0] : null}></img>
                 </div>
                 <div className='card-content m-2'>
-                <h5 className='mb-3'>리틀 파스타</h5>
+                <h5 className='mb-3'>✨ {props.place != undefined ? props.place.name : null}</h5>
 
 
                 <div className='mb-3'>
@@ -27,7 +26,7 @@ function PlaceCard() {
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                         <VscCircleFilled style={{ color: 'rgba(256,0, 0' }} fontSize={20} className='category-icon'></VscCircleFilled>
-                        <span className='category'>파스타</span>
+                        <span className='category'>{props.place != undefined ? props.place.category : null}</span>
                     </motion.div>
 
                     <motion.div
@@ -36,7 +35,7 @@ function PlaceCard() {
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                         <AiFillLike className='recommend-icon'></AiFillLike>
-                        <span className='recommend'>100</span>
+                        <span className='recommend'>{props.place != undefined ? props.place.recommend : null}</span>
                     </motion.div>
 
                     <motion.div
@@ -45,7 +44,7 @@ function PlaceCard() {
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                         <AiTwotoneHeart className='like-icon'></AiTwotoneHeart>
-                        <span className='like'>3</span>
+                        <span className='like'>{props.place != undefined ? props.place.like : null}</span>
                     </motion.div>
                 </div>
                 </div>
