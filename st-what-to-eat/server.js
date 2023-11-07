@@ -14,12 +14,12 @@ app.use(cors());
 
 // db 연결 import
 let connectDB = require('./database.js');
-const { CopyObjectOutputFilterSensitiveLog } = require('@aws-sdk/client-s3');
+const { CopyObjectOutputFilterSennsitiveLog } = require('@aws-sdk/client-s3');
 
 let db
 connectDB.then((client) => {
   console.log('DB 연결 성공')
-  app.listen(1300, function () {
+  app.listen(1302, function () {
     console.log('listening 1300')
   }); 
 }) 

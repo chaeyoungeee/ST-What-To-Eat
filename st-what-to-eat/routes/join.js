@@ -27,7 +27,7 @@ router.post('/', async (req, res) =>{
         password: hash,
         nickname: req.body.nickname
     })
-    res.redirect('/')
+    res.redirect('/login')
 })
 
 
