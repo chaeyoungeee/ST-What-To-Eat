@@ -9,7 +9,7 @@ function ImageSlider() {
     return(
         <ul className="img-slider">
             {
-                sortedPlaces.slice(0, 5).map((place)=>{
+                sortedPlaces.slice(0, 7).map((place)=>{
                     return(
                         <li>
                                 <PlaceCard place={place}   className="slider"></PlaceCard>

@@ -93,7 +93,7 @@ function App() {
         } />
         <Route path="/category" element={
           <>
-            <Place />
+            <Category></Category>
           </>
         } />
       </Routes>

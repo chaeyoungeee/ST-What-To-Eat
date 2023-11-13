@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { AiFillLike, AiTwotoneHeart } from "react-icons/ai"
 
 function PlaceCard(props) {
-
     return (
         <motion.div
             className='place-card'

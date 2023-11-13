@@ -150,7 +150,7 @@ app.use('/img', require('./routes/placeDB.js'))
 app.get('/place', async (req, res)=>{
   let data = await db.collection('place').find().toArray()
 
-  /* recommend, unrecommend, like값 조작 
+  /* recommend, unrecommend, like값 조작   */
   const places = await db.collection('place').find().toArray();
 
   places.forEach(async (place) => {
@@ -159,7 +159,7 @@ app.get('/place', async (req, res)=>{
     const like = 5 + Math.floor(Math.random() * 70);
     await db.collection('place').updateOne({ _id: place._id }, { $set: { recommend, unrecommend, like } });
   });
-  */
+
 
   res.json(data)
 })
