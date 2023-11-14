@@ -900,12 +900,29 @@ textarea::placeholder {
 }
 
 #category {
+  h3 {
+    margin-bottom: 2rem;
+  }
+  .filter-box {
+      .box {
+          margin-right: 0.5rem;
+          margin-bottom: 0.5rem;
+      
+          &:hover {
+            background-color: var(--green);
+            color: black;
+          }
+        }
+  }
+  .selected {
+    background-color: var(--green);
+    color: black;
+  }
   .place-card {
     width: 100%;
   }
   .places {
-    margin: 2rem auto;
-    width: 90vw;
+    padding: 0 3rem;
   }
 
     //----------  responsive breakpoints
@@ -957,11 +974,6 @@ textarea::placeholder {
   
     //----------  reset
     //------------------------------------------------------------------------------
-    htm,
-    body {
-      font-family: sans-serif;
-    }
-  
     a {
       text-decoration: none;
     }
@@ -994,7 +1006,7 @@ textarea::placeholder {
       transition: $duration $easing;
       color: var(--white);
       letter-spacing: 0.1em;
-      line-height: 4rem;
+      line-height: 3.5rem;
     
   
       &:hover,
@@ -1011,7 +1023,7 @@ textarea::placeholder {
   
       @include breakpoint(1199px) {
         padding: 0 15px;
-        line-height: 50px;
+        line-height: 2.5rem;
       }
   
       @include breakpoint(touch) {
@@ -1045,4 +1057,8 @@ textarea::placeholder {
         }
       }
     }
+}
+
+.filter {
+  padding: 0rem 4rem 1em;
 }

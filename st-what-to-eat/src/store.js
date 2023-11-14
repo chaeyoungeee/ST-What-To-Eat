@@ -41,11 +41,42 @@ let places = createSlice({
     }
 })
 
+let category = createSlice({
+    name: 'category',
+    initialState: [
+        {
+            name: '면',
+            color: '#ff193c'
+        },
+        {
+            name: '밥',
+            color: '#ffd900'
+        },
+        {
+            name: '파스타',
+            color: '#5724ff'
+        },
+        {
+            name: '찌개',
+            color: '#af24ff'
+        },
+        {
+            name: '일식',
+            color: '#ffaf24'
+        },
+        {
+            name: '떡볶이',
+            color: '#ff24bd'
+        },
+    ]
+})
+
 export default configureStore({
     reducer: {
         isLogin: isLogin.reducer,
         inputComp: inputComp.reducer,
-        places: places.reducer
+        places: places.reducer,
+        category: category.reducer
     }
 }) 
 

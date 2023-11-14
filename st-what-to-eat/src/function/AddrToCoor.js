@@ -10,7 +10,7 @@ function AddrToCoor() {
 
     navermaps.Service.geocode(
         {
-            address: '솔매로 22길 59',
+            address: '서울 노원구 공릉로 213 동신아파트 102동 상가 107호',
         },
         function (status, response) {
             if (status !== navermaps.Service.Status.OK) {

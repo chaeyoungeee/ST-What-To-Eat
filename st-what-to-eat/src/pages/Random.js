@@ -15,13 +15,13 @@ function Random() {
     let [fade, setFade] = useState('end')
 
     let places = useSelector((state) => { return state.places });
-    let sortedPlaces = [...places]
-    sortedPlaces = sortedPlaces.sort(()=> Math.random() - 0.5)
+    let [sortedPlaces, setSortedPlaces] = useState([...places])
+    // sortedPlaces = sortedPlaces.sort(()=> Math.random() - 0.5)
 
    
 
     let diceClickHandle = () => {
-        sortedPlaces = sortedPlaces.sort(() => Math.random() - 0.5)
+        setSortedPlaces(sortedPlaces.sort(() => Math.random() - 0.5))
         setFade('')
         setTimeout(() => { setFade('end') }, 300);
     }

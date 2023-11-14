@@ -13,7 +13,7 @@ import ImgUpload from "./components/ImgUpload";
 import MapNaverDefault from "./components/MapNaverDefault";
 import Login from "./pages/Login"
 import Join from "./pages/Join"
-import { initIsLogin } from "./store";
+import { initIsLogin, sortRecommend } from "./store";
 import Category from "./pages/Category";
 import Place from "./pages/Place";
 import { Row, Col } from "react-bootstrap";
@@ -49,6 +49,8 @@ function App() {
       dispatch(initPlaces(res.data))
     }, [])
   })
+
+  let places = useSelector((state) => { return state.places });
 
   return (
     <div className="App">
@@ -96,6 +98,17 @@ function App() {
             <Category></Category>
           </>
         } />
+
+        {/* <Route path="/test" element={
+          <div>
+            <ImgUpload></ImgUpload>
+            {
+              places.slice(0).reverse().map(function (a) {
+                return <Test data={a} />
+              })
+            }
+          </div>
+        }></Route> */}
       </Routes>
       <Footer />
     </div>

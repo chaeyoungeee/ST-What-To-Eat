@@ -3,8 +3,10 @@ import food from '../imgs/food1.jpg';
 import { VscCircleFilled } from "react-icons/vsc"
 import { motion } from "framer-motion";
 import { AiFillLike, AiTwotoneHeart } from "react-icons/ai"
+import { useSelector } from 'react-redux';
 
 function PlaceCard(props) {
+    let category = useSelector(state => state.category)
     return (
         <motion.div
             className='place-card'
@@ -24,7 +26,7 @@ function PlaceCard(props) {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-                        <VscCircleFilled style={{ color: 'rgba(256,0, 0' }} fontSize={20} className='category-icon'></VscCircleFilled>
+                        <VscCircleFilled style={{ color: category != undefined ? category.find(element => element.name == props.place.category).color : '#fff' }} fontSize={20} className='category-icon'></VscCircleFilled>
                         <span className='category'>{props.place != undefined ? props.place.category : null}</span>
                     </motion.div>
 

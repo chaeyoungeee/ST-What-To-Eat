@@ -45,39 +45,30 @@ let data = {
 
 
 let data = {
-    category: '일식',
-    name: '아소코',
+    category: '떡볶이',
+    name: '크앙분식 서울과기대점',
     recommend: 0,
     unrecommend: 0,
     like: 0,
-    link: 'https://map.naver.com/p/search/%EA%B3%B5%EB%A6%89%20%EC%B4%88%EB%B0%A5/place/1295848493?c=14.00,0,0,0,dh&placePath=%3Fentry%253Dbmp',
-    coord: [37.6246215, 127.0766011],
+    link:'https://map.naver.com/p/search/%EA%B3%B5%EB%A6%89%20%EB%96%A1%EB%B3%B6%EC%9D%B4/place/1070129964?c=14.00,0,0,0,dh&placePath=%3Fentry%253Dbmp',
+    coord: [37.6280811, 127.0768426],
     menus: [
         {
-            name: '하와이안롤카츠',
-            price:  13000
+            name: '크앙-라떡',
+            price:  5000
         },
         {
-            name: '연어덮밥',
-            price: 13000
+            name: '매콤크림파스타떡볶이',
+            price: 9000
         },
         {
-            name: '항정살덮밥',
-            price: 9500
+            name: '크앙-삼쫄',
+            price: 9000
         },
         {
-            name: '스키야키덮밥',
-            price: 10500
+            name: '크왕김말이',
+            price: 3800
         },
-        {
-            name: '스키야키우동',
-            price: 10500
-        },
-        {
-            name: '볶음우동',
-            price: 10500
-        }
-
     ],
     imgs: []
 }
@@ -134,7 +125,7 @@ router.post('/upload', async (req, res) => {
 
         let d = db.collection('place').insertOne(data)
 
-        res.redirect('/');
+        res.redirect('/test');
     })
 
 })

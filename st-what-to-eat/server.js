@@ -153,12 +153,12 @@ app.get('/place', async (req, res)=>{
   /* recommend, unrecommend, like값 조작   */
   const places = await db.collection('place').find().toArray();
 
-  places.forEach(async (place) => {
-    const recommend = 5 + Math.floor(Math.random() * 100);
-    const unrecommend =  Math.floor(Math.random() * 7);
-    const like = 5 + Math.floor(Math.random() * 70);
-    await db.collection('place').updateOne({ _id: place._id }, { $set: { recommend, unrecommend, like } });
-  });
+  // places.forEach(async (place) => {
+  //   const recommend = 5 + Math.floor(Math.random() * 100);
+  //   const unrecommend =  Math.floor(Math.random() * 7);
+  //   const like = 5 + Math.floor(Math.random() * 70);
+  //   await db.collection('place').updateOne({ _id: place._id }, { $set: { recommend, unrecommend, like } });
+  // });
 
 
   res.json(data)

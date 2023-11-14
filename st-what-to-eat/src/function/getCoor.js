@@ -30,7 +30,7 @@ async function geocodeAddress(address) {
     }
 }
 
-address = '서울 노원구 동일로184길 53 1층 아소코'
+address = '서울 노원구 공릉로 213 102동 1층'
 geocodeAddress(address)
     .then((location) => {
         console.log(`[${location.latitude}, ${location.longitude}]`);
