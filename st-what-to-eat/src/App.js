@@ -99,6 +99,11 @@ function App() {
           </>
         } />
 
+
+        <Route path="/place/:id" element={
+          <Place />
+        } />
+
         {/* <Route path="/test" element={
           <div>
             <ImgUpload></ImgUpload>

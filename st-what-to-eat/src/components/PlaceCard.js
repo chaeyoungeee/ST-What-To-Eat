@@ -4,11 +4,18 @@ import { VscCircleFilled } from "react-icons/vsc"
 import { motion } from "framer-motion";
 import { AiFillLike, AiTwotoneHeart } from "react-icons/ai"
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 function PlaceCard(props) {
+    let navigate = useNavigate();
     let category = useSelector(state => state.category)
+    const handleCardClick = () => {
+        navigate(`/place/${props.place._id}`)
+    }
     return (
         <motion.div
+            onClick={handleCardClick}
             className='place-card'
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

@@ -609,6 +609,9 @@ textarea::placeholder {
 }
 
 #place {
+  &.loading {
+    padding-bottom: 100vh !important;
+  }
   padding: 2rem 6rem;
   .title {
     overflow: hidden;
@@ -1062,3 +1065,4 @@ textarea::placeholder {
 .filter {
   padding: 0rem 4rem 1em;
 }
+
