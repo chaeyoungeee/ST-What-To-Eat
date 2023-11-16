@@ -1,0 +1,862 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@font-face {
+  font-family: "gt-flexa";
+  src: url("./font/GT-Flexa/GT-Flexa-Extended-Black-Trial.woff2");
+}
+@font-face {
+  font-family: "ClimateCrisisKR-2010";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/ClimateCrisisKR-2010.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ClimateCrisisKR-1979";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/ClimateCrisisKR-1979.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+:root {
+  --white: #ffffff;
+  --light:#f2f2f6;
+  --green: #31df7f;
+  --dark: #9f9f9f;
+  --black: #282832;
+  --blue: #288cff;
+  --red: #ff4f6d;
+  --lightGreen: rgb(166, 247, 204);
+  --moonYellow: #ffffc4;
+  --grey: #e8e6e2;
+  --dark1: #161618;
+  --dark3: #232326;
+  --dark4: #28282c;
+  --dark5: #2e2e32;
+  --dark6: #34343a;
+  --dark8: #5842c3;
+  --dark9: #706f78;
+  --dark10: #7e7d86;
+  --dark11: #a09fa6;
+  --dark12: #ededef;
+  --light3: #f4f2f4;
+  --light5: #e9e8ea;
+  --light6: #e4e2e4;
+  --light9: #908e96;
+  --light10: #86848d;
+  --darkViolet4: #2c2250;
+  --darkViolet6: #392c72;
+  --violet1: #fdfcfe;
+  --violet3: #f5f2ff;
+  --violet4: #ede9fe;
+  --violet6: #d7cff9;
+  --violet8: #aa99ec;
+  --themeCardBgColor: var(--white);
+  --themeTextColor: var(--black);
+  --themeTitleColor: var(--black);
+  --themeTitleBgColor: var(--green);
+  --themeNavHover: var(--lightGreen);
+  --themeSideNav: var(--green);
+  --themeSideNavHover: var(--lightGreen);
+  --themeFooterBgColor: var(--light3);
+  --themeFooterInputColor: var(--midnightPurple);
+  --themeScrollBarColor: var(--lightGreen);
+  --themeLikeColor: var(--red);
+  --themeRecommendColor: var(--blue);
+  --themeIconColor: var(--black);
+  --themeIconBgColor: var(--green);
+  --boxBorderRadius: 2.5rem;
+}
+
+body {
+  background-color: var(--light);
+}
+
+@keyframes scaleUp {
+  to {
+    font-size: 1.3rem;
+  }
+}
+@keyframes scaleDown {
+  from {
+    font-size: 1.3rem;
+  }
+  to {
+    font-size: 0rem;
+  }
+}
+.App {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+.bottom {
+  visibility: hidden;
+  transform: translateY(50rem);
+}
+
+.up {
+  visibility: visible;
+  transform: translateY(0);
+  transition: 0.3s ease all;
+}
+
+.start {
+  opacity: 0;
+}
+
+.end {
+  opacity: 1;
+  transition: 0.5s ease all;
+}
+
+#navbar {
+  padding: 1rem 2rem !important;
+  background-color: var(--white) !important;
+  --bs-navbar-color: rgba(var(--bs-emphasis-color-rgb), 1);
+  margin: 2rem 2rem 0rem 2rem;
+  border-radius: var(--boxBorderRadius) var(--boxBorderRadius) 0rem 0rem;
+}
+@media (min-width: 768px) {
+  #navbar .container, #navbar .container-md, #navbar .container-sm {
+    max-width: 2010px;
+  }
+}
+#navbar .main-bar .nav-link {
+  width: 9rem;
+  transition: 0.3s ease-in all;
+}
+#navbar .main-bar .nav-link .menu-icon {
+  position: relative;
+  bottom: 0.1rem;
+  font-size: 0;
+  margin-right: 0.3rem;
+  transition: 0.3s ease-in all;
+}
+#navbar .main-bar .nav-link:hover {
+  background-color: var(--themeNavHover);
+}
+#navbar .main-bar .nav-link:hover .menu-icon {
+  animation: scaleUp 0.3s linear forwards;
+}
+#navbar .main-bar .nav-link:not(:hover) .menu-icon {
+  animation: scaleDown 0.3s linear forwards;
+}
+#navbar .side-bar .likes {
+  width: 3rem;
+  height: 3rem;
+}
+#navbar .side-bar .likes .icon {
+  transition: 0.3s ease-in all;
+  position: relative;
+  bottom: 0.1rem;
+  font-size: 1.3rem;
+}
+#navbar .side-bar .login, #navbar .side-bar .logout {
+  width: 7rem;
+}
+#navbar .side-bar .logout {
+  background-color: var(--red) !important;
+}
+#navbar .side-bar .nav-link {
+  background-color: var(--themeSideNav);
+  transition: 0.3s ease-in all;
+}
+#navbar .side-bar .nav-link:hover {
+  background-color: var(--themeSideNavHover);
+}
+#navbar .side-bar .nav-link:hover .icon {
+  color: var(--themeLikeColor);
+}
+#navbar .nav-link {
+  border-radius: 1.5rem;
+  padding: 0.8rem;
+  margin: 0.3rem 0.5rem;
+}
+
+.main {
+  background-color: white;
+  height: 81vh;
+  display: flex;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.main .title {
+  font-family: ClimateCrisisKR-1979;
+  position: relative;
+  text-align: left;
+}
+.main .title div {
+  margin: 0;
+  padding: 0;
+  line-height: 1.05;
+  font-size: calc(9vw + 1.5rem);
+}
+.main .title img {
+  width: 60%;
+  position: absolute;
+  top: calc(8vw + 0.5rem);
+  left: calc(30vw + 1.5rem);
+}
+
+.img-slider {
+  position: relative;
+  top: -2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  list-style: none;
+  overflow-x: scroll;
+  padding: 20px 0;
+  flex: 0 0 600px;
+  margin: 0 auto;
+}
+.img-slider .pl {
+  border-radius: 2rem;
+  border: 1px solid red;
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background: rgb(247, 247, 247);
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--themeScrollBarColor);
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: rgb(247, 247, 247);
+}
+
+li {
+  flex: 0 0 18rem;
+  margin: 0 2rem 0 0;
+}
+
+li:last-of-type {
+  margin: 0;
+}
+
+.place-card {
+  text-align: left;
+  width: 19em;
+  background-color: var(--themeCardBgColor);
+  border: 0.7rem solid var(--white);
+  border-radius: 1.3rem;
+}
+.place-card .card-img {
+  height: 19rem;
+  overflow: hidden;
+  border-top-right-radius: 1.3rem;
+  border-top-left-radius: 1.3rem;
+}
+.place-card .card-img:hover img {
+  transform: scale(1.2);
+}
+.place-card .card-img img {
+  transition: transform 0.3s;
+  border-top-right-radius: 1.3rem;
+  border-top-left-radius: 1.3rem;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card-content {
+  padding-top: 0.5rem;
+  height: 5rem;
+  margin: 1rem;
+}
+.card-content h5 {
+  font-weight: 900;
+}
+
+.box {
+  font-size: 0.9rem;
+  display: inline-block;
+  position: relative;
+  color: var(--white);
+  background-color: var(--black);
+  text-align: left;
+  padding: 0.3rem 1rem;
+  border-radius: 1rem;
+}
+.box .category-icon {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.4rem;
+}
+.box .recommend-icon {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.6rem;
+  color: var(--themeRecommendColor);
+}
+.box .like-icon {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.6rem;
+  color: var(--themeLikeColor);
+}
+.box .category, .box .recommend, .box .like {
+  margin-left: 0.9rem;
+}
+
+#best5, #random, #like, #footer {
+  margin: 2rem 2rem 0rem;
+  border-radius: var(--boxBorderRadius);
+  padding: 3rem 4rem;
+}
+
+#best5 {
+  background-color: var(--black);
+}
+#best5 h3 {
+  color: var(--green);
+}
+#best5 p {
+  color: var(--white);
+}
+
+#footer {
+  margin-bottom: 2rem;
+  background-color: var(--black);
+  border-radius: 2rem;
+}
+#footer .require {
+  display: flex;
+  justify-content: center;
+  text-align: right;
+}
+#footer .require form {
+  width: 100%;
+}
+#footer .require form textarea {
+  font-weight: 600;
+  border: none;
+  border-radius: 1rem;
+  width: 100%;
+  font-size: 1.7rem;
+  padding: 1rem;
+  resize: none;
+}
+#footer .require form input {
+  margin-top: 1rem;
+  font-weight: 700;
+  width: 10rem;
+  position: inline-block;
+  border-radius: 2rem;
+  background-color: var(--green);
+  border: none;
+  height: 3rem;
+}
+#footer .info {
+  margin: 2rem 0rem 0rem;
+  text-align: right;
+  color: white;
+}
+#footer .info .info-icon {
+  margin-right: 0.5rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h1 {
+  margin: 0;
+}
+
+h3.title {
+  font-family: "gt-flexa", sans-serif;
+  font-size: 2.5rem;
+  border-radius: 2rem;
+}
+h3.title span {
+  margin-left: 0.4rem;
+}
+
+.desc {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+#random, #like {
+  min-height: 50rem;
+  position: relative;
+}
+#random p, #like p {
+  color: var(--black);
+}
+#random h3, #like h3 {
+  color: var(--black);
+}
+#random .container, #like .container {
+  max-width: 60rem;
+}
+#random .button, #like .button {
+  position: relative;
+  background-color: var(--green);
+  border: 1px solid var(--green);
+  width: 6rem;
+  height: 6rem;
+  border-radius: 4rem;
+  display: inline-block;
+  margin-top: 1.5rem;
+}
+#random .button .icon, #like .button .icon {
+  color: var(--themeIconColor);
+  position: absolute;
+  font-size: 3rem;
+  top: 0.8rem;
+  left: 1.4rem;
+  transition: 0.4s all;
+}
+#random .memoji2, #like .memoji2 {
+  position: absolute;
+  width: calc(15vw + 1.5rem);
+  left: 0.5rem;
+  bottom: 0.5rem;
+}
+
+.retry-btn:hover .icon {
+  transform: rotate(360deg);
+}
+
+.like-btn:hover .icon {
+  color: var(--themeLikeColor) !important;
+}
+
+#like {
+  background-color: var(--lightGreen) !important;
+  margin-left: 0.25rem;
+}
+#like .title, #like .desc {
+  color: var(--black);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+#login, #join {
+  background-color: var(--white);
+}
+#login form, #join form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: calc(20vw + 15rem);
+}
+#login form h2, #join form h2 {
+  font-family: gt-flexa;
+  margin-bottom: 1rem;
+}
+#login form input, #login form button, #join form input, #join form button {
+  font-weight: 700;
+  margin: 0.3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: 1px solid var(--dark);
+}
+#login form button, #join form button {
+  border: none;
+  height: 3rem;
+}
+#login form .login, #join form .login {
+  margin-top: 1rem;
+  background-color: var(--green);
+}
+#login form .join, #join form .join {
+  background-color: var(--black);
+  color: var(--white);
+}
+#login form p, #join form p {
+  margin-top: 0.8rem;
+}
+#login form .social-login, #join form .social-login {
+  margin-top: 1rem;
+}
+#login form img, #join form img {
+  width: 3rem;
+}
+
+#join button {
+  background-color: var(--black) !important;
+  color: var(--white);
+}
+
+.first {
+  background-color: var(--white);
+  border-radius: 0rem 0rem var(--boxBorderRadius) var(--boxBorderRadius);
+  padding: 2rem 1rem 6rem 1rem;
+  margin: 0rem 2rem;
+}
+
+#place {
+  padding: 2rem 6rem;
+}
+#place.loading {
+  padding-bottom: 100vh !important;
+}
+#place .title {
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 2.2rem;
+  font-family: ClimateCrisisKR-1979;
+  margin-bottom: 2rem;
+}
+#place .row {
+  --bs-gutter-x: 0 !important;
+}
+#place .col-box {
+  padding: 0.5rem;
+}
+#place .menu {
+  margin-top: 0.5rem;
+  background-color: var(--black);
+  color: var(--white);
+  border-radius: 2rem;
+  border: 1px solid var(--dark);
+  padding: 2.5rem;
+}
+#place .menu h3 {
+  color: var(--green);
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  font-family: gt-flexa;
+}
+#place .menu .row {
+  align-items: center;
+}
+#place .menu .menu-name {
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 1.2rem;
+}
+#place .menu .menu-price {
+  font-size: 1rem;
+}
+#place .menu .menu-table :nth-child(2n+1) {
+  padding-right: 1rem;
+}
+#place .menu .menu-table :nth-child(2n) {
+  padding-left: 1rem;
+}
+#place .img {
+  border-radius: 2rem;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#place .icons {
+  margin: 3rem auto 1rem;
+  max-width: 28rem;
+}
+#place .icons .col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#place .icons .col p {
+  margin-top: 0.5rem;
+  font-size: 1.3rem;
+}
+#place .icons .col .icon {
+  position: relative;
+  background-color: var(--green);
+  border-radius: 7rem;
+  width: 6rem;
+  height: 6rem;
+  font-size: 3rem;
+  transition: 0.3s ease-in background-color;
+}
+#place .icons .col .icon:hover {
+  background-color: var(--lightGreen);
+}
+#place .icons .col .icon:hover .recommend-icon {
+  color: var(--blue);
+}
+#place .icons .col .icon:hover .unrecommend-icon {
+  color: var(--dark);
+}
+#place .icons .col .icon:hover .like-icon {
+  color: var(--red);
+}
+#place .icons .col .icon .recommend-icon {
+  transition: 0.3s ease-in color;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+}
+#place .icons .col .icon .unrecommend-icon {
+  position: absolute;
+  top: 1.7rem;
+  left: 1.5rem;
+  transition: 0.3s ease-in color;
+}
+#place .icons .col .icon .like-icon {
+  transition: 0.3s ease-in color;
+  position: absolute;
+  top: 1.65rem;
+  left: 1.5rem;
+}
+
+#random {
+  background-color: var(--white);
+  margin-right: 0.25rem;
+}
+#random .place-card {
+  color: var(--white);
+  border: 0.7rem solid var(--black);
+  background-color: var(--black);
+}
+#random .place-card .box {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+@media (max-width: 768px) {
+  .detail {
+    display: none !important;
+  }
+  #random, #like {
+    margin: 2rem 2rem 0rem !important;
+  }
+  .main {
+    height: 100% !important;
+  }
+  #place {
+    padding: 2rem 3rem !important;
+  }
+  #place .title {
+    font-size: 1.7rem !important;
+  }
+  .img-box {
+    height: 100% !important;
+  }
+  .icons {
+    width: 90%;
+  }
+  .icons .icon {
+    width: 4.5rem !important;
+    height: 4.5rem !important;
+    font-size: 2rem !important;
+  }
+  .icons .icon .recommend-icon {
+    top: 1.25rem !important;
+    left: 1.3rem !important;
+  }
+  .icons .icon .unrecommend-icon {
+    top: 1.5rem !important;
+    left: 1.3rem !important;
+  }
+  .icons .icon .like-icon {
+    top: 1.4rem !important;
+    left: 1.25rem !important;
+  }
+}
+@media screen and (max-width: 992px) {
+  .menu-table :nth-child(2n+1) {
+    padding-right: 0 !important;
+  }
+  .menu-table :nth-child(2n) {
+    padding-left: 0 !important;
+  }
+}
+.like-item {
+  margin-bottom: 1.5rem;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem 2rem 1.3em;
+}
+.like-item h2 {
+  display: inline-block;
+  position: relative;
+  top: 0.4rem;
+  left: -0.6rem;
+  font-size: 3rem;
+}
+.like-item .title {
+  align-self: center;
+}
+.like-item h4 {
+  margin: 0 !important;
+  font-weight: 800;
+}
+.like-item .detail {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-grow: 0;
+}
+.like-item .detail div {
+  white-space: nowrap;
+  padding: 0.5rem 1.5rem;
+  color: white;
+  border-radius: 2rem;
+  background-color: var(--black);
+}
+
+.comment {
+  background-color: var(--white);
+  margin: 2rem 2rem 0rem;
+  border-radius: var(--boxBorderRadius);
+  padding: 2rem 2.5rem;
+}
+.comment p, .comment h5 {
+  margin: 0;
+  padding: 0;
+}
+.comment .reply-comment {
+  background-color: var(--light);
+  margin-top: 1rem;
+  border-radius: 1.5rem;
+  padding: 1rem 1.5rem;
+}
+.comment .reply-comment .comment-menu div {
+  background-color: var(--white) !important;
+}
+
+.comment-menu {
+  height: 2rem;
+  text-align: end;
+}
+.comment-menu div {
+  padding: 0rem 1rem;
+  background-color: var(--light);
+}
+.comment-menu div:first-of-type {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+.comment-menu div:last-of-type {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.comment-menu .icon {
+  top: 0.15rem;
+  position: relative;
+}
+
+.comment-input input[type=text] {
+  width: 78%;
+  font-weight: 700;
+  margin-right: 2%;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: 1px solid var(--dark);
+}
+.comment-input input[type=submit] {
+  background-color: var(--green);
+  border: 1px solid var(--green);
+  width: 20%;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: none;
+}
+
+#category h3 {
+  margin-bottom: 2rem;
+}
+#category .filter-box .box {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+#category .filter-box .box:hover {
+  background-color: var(--green);
+  color: black;
+}
+#category .selected {
+  background-color: var(--green);
+  color: black;
+}
+#category .place-card {
+  width: 100%;
+}
+#category .places {
+  padding: 0 3rem;
+}
+#category a {
+  text-decoration: none;
+}
+#category .pagination-wrapper {
+  text-align: center;
+  margin: 40px 0;
+}
+#category .pagination {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0 1.5rem;
+  border-radius: 2rem;
+  background-color: var(--black);
+}
+@media only screen and (max-width: 1199px) {
+  #category .pagination {
+    margin-top: 50px;
+    padding: 0 10px;
+    border-radius: 25px;
+  }
+}
+#category .page-numbers {
+  display: block;
+  padding: 0 25px;
+  float: left;
+  transition: 400ms ease;
+  color: var(--white);
+  letter-spacing: 0.1em;
+  line-height: 3.5rem;
+}
+#category .page-numbers:hover, #category .page-numbers.current {
+  background-color: var(--green);
+  color: #fff;
+}
+#category .page-numbers.prev:hover, #category .page-numbers.next:hover {
+  background-color: transparent;
+  color: var(--green);
+}
+@media only screen and (max-width: 1199px) {
+  #category .page-numbers {
+    padding: 0 15px;
+    line-height: 2.5rem;
+  }
+}
+@media only screen and (min-width: 120px) and (max-width: 1024px) {
+  #category .page-numbers {
+    padding: 0 14px;
+    display: none;
+  }
+  #category .page-numbers:nth-of-type(2) {
+    position: relative;
+    padding-right: 50px;
+  }
+  #category .page-numbers:nth-of-type(2)::after {
+    content: "...";
+    position: absolute;
+    font-size: 25px;
+    top: 0;
+    left: 45px;
+  }
+  #category .page-numbers:nth-child(-n+3), #category .page-numbers:nth-last-child(-n+3) {
+    display: block;
+  }
+  #category .page-numbers:nth-last-child(-n+4) {
+    padding-right: 14px;
+  }
+  #category .page-numbers:nth-last-child(-n+4)::after {
+    content: none;
+  }
+}
+
+.filter {
+  padding: 0rem 4rem 1em;
+}/*# sourceMappingURL=App.css.map */

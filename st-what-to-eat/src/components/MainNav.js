@@ -66,7 +66,7 @@ function MainNav() {
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-                  <Nav.Link className="likes" onClick={() => { navigate("/likes") }}>
+                  <Nav.Link className="likes" onClick={() => { navigate("/mypage") }}>
                     <BiHeart className="icon"></BiHeart>
                   </Nav.Link>
                 </motion.div>

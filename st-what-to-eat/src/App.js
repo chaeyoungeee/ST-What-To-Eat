@@ -17,6 +17,7 @@ import { initIsLogin, sortRecommend } from "./store";
 import Category from "./pages/Category";
 import Place from "./pages/Place";
 import { Row, Col } from "react-bootstrap";
+import Mypage from "./pages/Mypage";
 import Test from "./pages/Test";
 
 // react-bootstrap
@@ -47,8 +48,8 @@ function App() {
   useEffect(()=>{
     axios.get('/place').then((res)=>{
       dispatch(initPlaces(res.data))
-    }, [])
-  })
+    })
+  }, [])
 
   let places = useSelector((state) => { return state.places });
 
@@ -75,7 +76,7 @@ function App() {
             <Best5 />
             <Row>
                 <Col md={6}>
-                  <Random />
+                  <Random places={places}/>
                 </Col>
               <Col md={6}>
                 <Like/>
@@ -103,7 +104,10 @@ function App() {
         <Route path="/place/:id" element={
           <Place />
         } />
-
+        
+        <Route path="/mypage" element={
+          <Mypage />
+        } />
         {/* <Route path="/test" element={
           <div>
             <ImgUpload></ImgUpload>
@@ -114,6 +118,7 @@ function App() {
             }
           </div>
         }></Route> */}
+        
       </Routes>
       <Footer />
     </div>
