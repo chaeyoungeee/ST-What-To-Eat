@@ -29,7 +29,7 @@ function Mypage() {
         <div id="mypage" className="first">
             <div className={"start " + fade}>
             <div className="title-pd">
-                <h1>🥰</h1>
+                <h1>💁🏻</h1>
                 <h3 className="title">Mypage</h3>
             </div>
             <Grid setLikes={setLikes} places={likes} mypage={true}></Grid>

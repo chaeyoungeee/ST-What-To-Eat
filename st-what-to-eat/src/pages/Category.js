@@ -15,11 +15,16 @@ function Category() {
     let [pl, setPl] = useState([...places]);
     let [selectedCategory, setSelectedCategory] = useState('전체');
     let [selectedSorting, setSelectedSorting] = useState('최신순');
+    let [fade, setFade] = useState('')
 
 
     useEffect(()=> {
         setPl(pl)
         handleSortingClick(selectedSorting);
+        setTimeout(() => { setFade('end') }, 300)
+        return () => {
+            setFade('')
+        }
     }, [])
 
     const handleCategoryClick = (category) => {
@@ -57,6 +62,7 @@ function Category() {
 
     return (
         <div id="category" className="first">
+            <div className={"start " + fade}>
             <div className="title-pd text-start">
                 <h1>📂</h1>
                 <h3 className="title">Filter</h3>
@@ -111,7 +117,7 @@ function Category() {
             </div>
 
             <Grid places={pl} mypage={false}></Grid>
-            
+            </div>
         </div>
     )
 
