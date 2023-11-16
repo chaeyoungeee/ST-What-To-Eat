@@ -6,7 +6,7 @@ import MainNav from "./components/MainNav";
 import Main from "./pages/Main";
 import { motion } from "framer-motion";
 import PlaceCard from "./components/PlaceCard";
-import Best5 from "./pages/Best5";
+import Best from "./pages/Best";
 import Footer from "./components/Footer";
 import { useScroll } from "framer-motion";
 import ImgUpload from "./components/ImgUpload";
@@ -73,7 +73,7 @@ function App() {
         <Route path="/" element={
             <>
             <Main />
-            <Best5 />
+            <Best />
             <Row>
                 <Col md={6}>
                   <Random places={places}/>

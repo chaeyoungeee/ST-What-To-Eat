@@ -13,11 +13,11 @@ function Best5() {
     
     return (
         <div data-aos="zoom-in-down" data-aos-duration="800">
-            <div id="best5" className="text-start">
+            <div id="best" className="text-start">
                 <h1>🎖️</h1>
                 <h3 className="title">
                     {/* <FiAward className="icon"></FiAward> */}
-                    Best 5
+                    Best 7
                 </h3>
                 <p className="desc">많은 추천을 받은 음식점들을 확인 해보세요!</p>
                 <ImageSlider></ImageSlider>

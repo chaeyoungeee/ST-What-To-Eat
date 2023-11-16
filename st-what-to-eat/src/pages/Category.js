@@ -110,7 +110,7 @@ function Category() {
                 </Row>
             </div>
 
-            <Grid places={pl}></Grid>
+            <Grid places={pl} mypage={false}></Grid>
             
         </div>
     )

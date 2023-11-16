@@ -48,13 +48,13 @@ function MainNav() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="main-bar">
+            <Nav.Link href="#best">
+              <FiAward className="menu-icon"></FiAward>
+              Best 7
+            </Nav.Link>
             <Nav.Link href="#random">
               <PiBowlFood className="menu-icon"></PiBowlFood>
-              Random
-            </Nav.Link>
-            <Nav.Link href="#best5">
-              <FiAward className="menu-icon"></FiAward>
-              Best 5
+              Random & Like
             </Nav.Link>
             <Nav.Link onClick={() => { navigate("/category")}}>
               <BiCategoryAlt className="menu-icon"></BiCategoryAlt>

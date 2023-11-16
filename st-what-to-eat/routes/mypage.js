@@ -39,11 +39,24 @@ router.get('/', isLoggedIn, async (req, res, next) => {
         // console.log(data)
         return data
     }))
-    console.log(likes)
    res.json(likes)
 })
 
+router.delete('/like/delete', isLoggedIn, async (req, res, next) => {
+    console.log(req.query.id);
+    await db.collection('user').updateOne(
+        { username: req.user.username },
+        { $pull: { 'likes': req.query.id } }
+    );
+    let data = await db.collection('user').findOne({ username: req.user.username });
+    let likes = await Promise.all(data.likes.map(async (id) => {
+        let data = await db.collection('place').findOne({ _id: new ObjectId(id) })
+        return data
+    }))
 
+    console.log(likes)
+    res.json(likes)
+});
 
 module.exports = router;
 

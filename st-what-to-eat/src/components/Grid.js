@@ -22,6 +22,10 @@ function Grid(props) {
         setIdx(idx);
     }
 
+    if (!props.places) {
+        return <></>
+    }
+
     return (
         <div>
             <Row className="places">
@@ -29,7 +33,7 @@ function Grid(props) {
                     props.places.slice(idx * 9, (idx + 1) * 9).map((place, i) => {
                         return (
                             <Col md={6} lg={4}>
-                                <PlaceCard place={place}></PlaceCard>
+                                <PlaceCard setLikes={props.setLikes} mypage={props.mypage} place={place}></PlaceCard>
                             </Col>
                         )
                     })

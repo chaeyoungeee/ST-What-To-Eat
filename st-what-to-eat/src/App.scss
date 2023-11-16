@@ -156,7 +156,7 @@ body {
 
   .main-bar {
     .nav-link {
-      width: 9rem;
+      width: 11rem;
       transition: 0.3s ease-in all;
       
       .menu-icon {
@@ -298,11 +298,21 @@ li:last-of-type {
 
 // Place Card
 .place-card {
+  position: relative;
   text-align: left;
   width: 19em;
   background-color: var(--themeCardBgColor);
   border: .7rem solid var(--white);
   border-radius: 1.3rem;
+  .delete-btn {
+    z-index: 3;
+    bottom: 0rem;
+    right: 0rem;
+    position: absolute;
+    color: var(--red);
+    text-align: end;
+    font-size: 4rem;
+  }
   .card-img {
     height: 19rem;
     overflow: hidden;
@@ -373,14 +383,14 @@ li:last-of-type {
 }
 
 
-// Best5
-#best5, #random, #like, #footer {
+// best
+#best, #random, #like, #footer {
   margin: 2rem 2rem 0rem;
   border-radius: var(--boxBorderRadius);
   padding: 3rem 4rem;
 }
 
-#best5 {
+#best {
   background-color: var(--black);
   h3 {
     color: var(--green);
@@ -608,10 +618,12 @@ textarea::placeholder {
   margin: 0rem 2rem;
 }
 
+    .loading {
+      padding-bottom: 100vh !important;
+    }
+
 #place {
-  &.loading {
-    padding-bottom: 100vh !important;
-  }
+
   padding: 2rem 6rem;
   .title {
     overflow: hidden;

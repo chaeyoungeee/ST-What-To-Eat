@@ -7,8 +7,13 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
+import { Row, Col } from 'react-bootstrap';
+import { TiDelete } from "react-icons/ti";
+
+import { IoIosRemoveCircle } from "react-icons/io";
 
 function PlaceCard(props) {
+
     let navigate = useNavigate();
     let category = useSelector(state => state.category);
 
@@ -16,9 +21,17 @@ function PlaceCard(props) {
         navigate(`/place/${props.place._id}`)
     }
 
+    const handleDelete = (e) => {
+        axios.delete('/mypage/like/delete', {
+            params:  { id: props.place._id }
+        }).then((response)=>{
+            console.log(response.data)
+            props.setLikes(response.data);
+        })
+        e.stopPropagation(); 
+    }
+
     const categoryColor = () => {
-        console.log(category)
-        console.log(props.place)
         if (category != undefined) {
             return category.find(ele => ele.name === props.place.category)?.color
         }
@@ -36,40 +49,36 @@ function PlaceCard(props) {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                 <div className='card-img'>
+                    {console.log(props.mypage)}
+                { props.mypage == true &&
+                    <TiDelete
+                    className='delete-btn'
+                    onClick={handleDelete}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                ></TiDelete>
+}
                 <img src={props.place != undefined ? props.place['imgs'][0] : null}></img>
                 </div>
                 <div className='card-content m-2'>
-                <h5 className='mb-3'>✨ {props.place != undefined ? props.place.name : null}</h5>
+                        <h5 className='mb-3'>✨ {props.place != undefined ? props.place.name : null}</h5>
+                        <div className='mb-3'>
+                            <div className='box'>
+                                <VscCircleFilled style={{ color: categoryColor() }} fontSize={20} className='category-icon'></VscCircleFilled>
+                                <span className='category'>{props.place != undefined ? props.place.category : null}</span>
+                            </div>
 
+                            <div className='box ms-2'>
+                                <AiFillLike className='recommend-icon'></AiFillLike>
+                                <span className='recommend'>{props.place != undefined ? props.place.recommend : null}</span>
+                            </div>
 
-                <div className='mb-3'>
-                    <motion.div
-                        className='box'
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-                        <VscCircleFilled style={{ color: categoryColor() }} fontSize={20} className='category-icon'></VscCircleFilled>
-                        <span className='category'>{props.place != undefined ? props.place.category : null}</span>
-                    </motion.div>
-
-                    <motion.div
-                        className='box ms-2'
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-                        <AiFillLike className='recommend-icon'></AiFillLike>
-                        <span className='recommend'>{props.place != undefined ? props.place.recommend : null}</span>
-                    </motion.div>
-
-                    <motion.div
-                        className='box ms-2'
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-                        <AiTwotoneHeart className='like-icon'></AiTwotoneHeart>
-                        <span className='like'>{props.place != undefined ? props.place.like : null}</span>
-                    </motion.div>
-                </div>
+                            <div className='box ms-2'>
+                                <AiTwotoneHeart className='like-icon'></AiTwotoneHeart>
+                                <span className='like'>{props.place != undefined ? props.place.like : null}</span>
+                            </div>
+                        </div>
                 </div>
         </motion.div>
     )
