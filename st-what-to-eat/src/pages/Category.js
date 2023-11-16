@@ -4,12 +4,14 @@ import { useSelector } from "react-redux";
 import { VscCircleFilled } from "react-icons/vsc"
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Grid from "../components/Grid";
 import { GrFormPrevious } from "react-icons/gr"
 
 function Category() {
     let places = useSelector((state) => { return state.places });
-    let [idx, setIdx] = useState(0);
+   
     let category = useSelector(state => state.category);
+    // let category = undefined;
     let [pl, setPl] = useState([...places]);
     let [selectedCategory, setSelectedCategory] = useState('전체');
     let [selectedSorting, setSelectedSorting] = useState('최신순');
@@ -50,22 +52,7 @@ function Category() {
         }
     };
 
-    let printNum = (idx) => {
-        let num = Math.ceil(pl.length / 9)
-        let a = []
-        for (let i = 0; i < num; i++) {
-            if (idx == i) {
-                a.push(<span aria-current="page" class="page-numbers current">{i + 1}</span>)
-            } else {
-                a.push(<a class="page-numbers" onClick={()=>{handleNumClick(i)}}>{i + 1}</a>)
-            }
-        }
-        return a;
-    }
-
-    let handleNumClick = (idx) => {
-        setIdx(idx);
-    }
+    
     
 
     return (
@@ -123,40 +110,8 @@ function Category() {
                 </Row>
             </div>
 
-            <Row className="places">
-                {
-                    pl.slice(idx*9, (idx+1)*9).map((place, i)=>{
-                        return (
-                            <Col md={6} lg={4}>
-                                <PlaceCard place={place}></PlaceCard>
-                            </Col>
-                        )
-                    })
-                }
-            </Row>
+            <Grid places={pl}></Grid>
             
-
-            <div class="pagination-wrapper">
-                <div class="pagination">
-                    <a class="prev page-numbers" onClick={()=>{
-                        if(idx-1<0) {
-                            setIdx(idx);
-                        }
-                        else {
-                            setIdx(--idx);
-                        }
-                    }}>prev</a>
-                    {printNum(idx)}
-                    <a class="next page-numbers" onClick={() => {
-                        if (idx + 1 >= Math.ceil(pl.length / 9)) {
-                            setIdx(idx);
-                        }
-                        else {
-                            setIdx(++idx);
-                        }
-                    }}>next</a>
-                </div>
-            </div>
         </div>
     )
 

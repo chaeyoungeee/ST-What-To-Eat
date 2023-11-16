@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
+
 app.use(express.urlencoded({ extended: true }));
 
 // 환경변수 이용
@@ -27,6 +28,7 @@ connectDB.then((client) => {
 .catch((err) => {
   console.log(err)
 })
+
 
 
 
@@ -84,6 +86,7 @@ passport.use(new LocalStrategy(async (입력한아이디, 입력한비번, cb) =
   }
 }))
 
+const { isLoggedIn, isNotLoggedIn } = require('./middlewares/authCheck.js');
 
 // 
 passport.serializeUser((user, done) => {
@@ -103,8 +106,6 @@ passport.deserializeUser(async (user, done) => {
 
 
 app.use('/join', require('./routes/join.js'))
-
-
 
 
 app.post("/login", async (req, res, next) => {
@@ -146,23 +147,27 @@ app.use('/img', require('./routes/placeDB.js'))
 
 
 
-
-app.get('/place', async (req, res)=>{
-  let data = await db.collection('place').find().toArray()
-
-  /* recommend, unrecommend, like값 조작   */
-  const places = await db.collection('place').find().toArray();
-
-  // places.forEach(async (place) => {
-  //   const recommend = 5 + Math.floor(Math.random() * 100);
-  //   const unrecommend =  Math.floor(Math.random() * 7);
-  //   const like = 5 + Math.floor(Math.random() * 70);
-  //   await db.collection('place').updateOne({ _id: place._id }, { $set: { recommend, unrecommend, like } });
-  // });
+app.use('/place', require('./routes/place.js'))
 
 
-  res.json(data)
-})
+
+
+// app.get('/place', async (req, res)=>{
+//   let data = await db.collection('place').find().toArray()
+
+//   /* recommend, unrecommend, like값 조작   */
+//   const places = await db.collection('place').find().toArray();
+
+//   // places.forEach(async (place) => {
+//   //   const recommend = 5 + Math.floor(Math.random() * 100);
+//   //   const unrecommend =  Math.floor(Math.random() * 7);
+//   //   const like = 5 + Math.floor(Math.random() * 70);
+//   //   await db.collection('place').updateOne({ _id: place._id }, { $set: { recommend, unrecommend, like } });
+//   // });
+
+
+//   res.json(data)
+// })
 
 
 

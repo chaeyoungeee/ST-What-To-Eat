@@ -10,17 +10,16 @@ import { useEffect, useState } from "react";
 import Comment from "../components/Comment";
 import CommentInput from "../components/CommentInput";
 import { useSelector } from "react-redux";
+import axios from 'axios'
 
 function Place() {
     let { id } = useParams();
 
     let places = useSelector(state=>state.places);
     let place = places.find((ele)=>{
-        console.log(ele._id)
         return ele._id == id
     })
 
-    console.log(place)
 
 
     let [fade, setFade] = useState('')
@@ -33,31 +32,7 @@ function Place() {
       }
     }, [])
 
-    let data = {
-        category: '파스타',
-        name: '리틀파스타 공릉본점',
-        recommend: 0,
-        unrecommend: 0,
-        like: 0,
-        link: '',
-        coord: [37.6220598, 127.07962],
-        menu: [
-            {
-                name: '페페그라노',
-                price: 17500
-            },
-            {
-                name: '봉골레 파스타',
-                price: '13900'
-            },
-            {
-                name: '마르게리따 피자',
-                price: '17900'
-            }
-        ],
-        imgs: ['https://placephotosbucket.s3.ap-northeast-2.amazonaws.com/1698915873504', 'https://placephotosbucket.s3.ap-northeast-2.amazonaws.com/1698915873513']
-    }
-
+    
     // let [imgSrc, setImgSrc] = useState(place['imgs'][0])
 
     // useState(()=>{
@@ -68,6 +43,47 @@ function Place() {
     //         if (i >= place['imgs'].length) i = 0
     //     }, 2500)
     // })
+
+    let [recommend, setRecommend] = useState(0);
+    let [unrecommend, setUnrecommend] = useState(0);
+    let [like, setLike] = useState(0);
+
+    useEffect(()=>{
+        if (place != undefined) {
+            setRecommend(place.recommend)
+            setUnrecommend(place.unrecommend)
+            setLike(place.like)
+        }
+    }, [place])
+
+
+    let handleRecommendClick = async () => {
+        await axios.put('/place/recommend', {
+            id: id
+        }).then((response)=>{
+            if (response.data == true) setRecommend(++recommend)
+            else alert(response.data)
+        })
+    }
+    
+    let handleUnRecommendClick = async () => {
+        await axios.put('/place/unrecommend', {
+            id: id
+        }).then((response) => {
+            if (response.data == true) setUnrecommend(++unrecommend)
+            else alert(response.data)
+        })
+    }
+
+    let handleLikeClick = async () => {
+        await axios.put('/place/like', {
+            id: id
+        }).then((response) => {
+            if (response.data == true) setLike(++like)
+            else alert(response.data)
+            
+        })
+    }
 
     if (!place) return (<div id="place" className="first loading">
         <div className={"start " + fade}></div>
@@ -148,33 +164,36 @@ function Place() {
             <Row className="icons">
                 <Col>
                     <motion.div
+                            onClick={handleRecommendClick}
                             className='icon'
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                         <AiFillLike className="recommend-icon"></AiFillLike>
                     </motion.div>
-                    <p>{place.recommend}</p>
+                    <p>{recommend}</p>
                 </Col>
                 <Col>
                     <motion.div
+                        onClick={handleUnRecommendClick}
                         className='icon'
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                         <AiFillDislike className="unrecommend-icon"></AiFillDislike>
                     </motion.div>
-                    <p>{place.unrecommend}</p>
+                    <p>{unrecommend}</p>
                 </Col>
                 <Col>
                     <motion.div
+                        onClick={handleLikeClick}
                         className='icon'
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                         <AiFillHeart className="like-icon"></AiFillHeart>
                     </motion.div>
-                    <p>{place.like}</p>
+                    <p>{like}</p>
                 </Col>
             </Row>
                 </div>

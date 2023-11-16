@@ -4,29 +4,37 @@ import "aos/dist/aos.css";
 import PlaceCard from "../components/PlaceCard";
 import { Row, Col, Container } from "react-bootstrap";
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
+import _ from "lodash";
 
-function Random() {
+function Random(props) {
+
+    function getRandomIndex(len) {
+        return Math.floor(Math.random() * len);
+    }
 
     useEffect(() => {
         AOS.init();
-    })
+        setSortedPlaces(_.cloneDeep(props.places));
+        setIdx(Math.floor(Math.random() * sortedPlaces.length))
+    }, [props.places])
     
     let [fade, setFade] = useState('end')
 
-    let places = useSelector((state) => { return state.places });
-    let [sortedPlaces, setSortedPlaces] = useState([...places])
+    let [sortedPlaces, setSortedPlaces] = useState(_.cloneDeep(props.places));
     // sortedPlaces = sortedPlaces.sort(()=> Math.random() - 0.5)
+
+    let [idx, setIdx] = useState(1)
 
    
 
+
     let diceClickHandle = () => {
-        setSortedPlaces(sortedPlaces.sort(() => Math.random() - 0.5))
+        // setSortedPlaces(shuffle(sortedPlaces));
+        setIdx(Math.floor(Math.random() * sortedPlaces.length))
+        console.log(sortedPlaces)
         setFade('')
         setTimeout(() => { setFade('end') }, 300);
     }
-
-
 
 
 
@@ -50,7 +58,7 @@ function Random() {
 
                     <Col xs={12} className="d-flex justify-content-center align-items-center" >
                             <div className={"start " + fade}>
-                                <PlaceCard place={sortedPlaces[0]}></PlaceCard>
+                                <PlaceCard place={sortedPlaces[idx]}></PlaceCard>
                             </div>
                     </Col>
                     <Col xs={12} className="d-flex justify-content-center align-items-center">

@@ -6,13 +6,28 @@ import { AiFillLike, AiTwotoneHeart } from "react-icons/ai"
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
 
 function PlaceCard(props) {
     let navigate = useNavigate();
-    let category = useSelector(state => state.category)
+    let category = useSelector(state => state.category);
+
     const handleCardClick = () => {
         navigate(`/place/${props.place._id}`)
     }
+
+    const categoryColor = () => {
+        console.log(category)
+        console.log(props.place)
+        if (category != undefined) {
+            return category.find(ele => ele.name === props.place.category)?.color
+        }
+        else {
+            return '#fff'
+        }
+    }
+
+    if (!props.place) return <></>
     return (
         <motion.div
             onClick={handleCardClick}
@@ -33,7 +48,7 @@ function PlaceCard(props) {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-                        <VscCircleFilled style={{ color: category != undefined ? category.find(element => element.name == props.place.category).color : '#fff' }} fontSize={20} className='category-icon'></VscCircleFilled>
+                        <VscCircleFilled style={{ color: categoryColor() }} fontSize={20} className='category-icon'></VscCircleFilled>
                         <span className='category'>{props.place != undefined ? props.place.category : null}</span>
                     </motion.div>
 
