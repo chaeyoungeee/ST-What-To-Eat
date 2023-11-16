@@ -902,7 +902,7 @@ textarea::placeholder {
   }
 }
 
-#category {
+#category, #mypage {
   h3 {
     margin-bottom: 2rem;
   }
@@ -1062,7 +1062,8 @@ textarea::placeholder {
     }
 }
 
-.filter {
+.title-pd {
+  text-align: start;
   padding: 0rem 4rem 1em;
 }
 

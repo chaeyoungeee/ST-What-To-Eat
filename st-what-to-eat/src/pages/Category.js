@@ -57,7 +57,7 @@ function Category() {
 
     return (
         <div id="category" className="first">
-            <div className="filter text-start">
+            <div className="title-pd text-start">
                 <h1>📂</h1>
                 <h3 className="title">Filter</h3>
                 <Row className="filter-box">
