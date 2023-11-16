@@ -24,8 +24,7 @@ function PlaceCard(props) {
     const handleDelete = (e) => {
         axios.delete('/mypage/like/delete', {
             params:  { id: props.place._id }
-        }).then((response)=>{
-            console.log(response.data)
+        }).then(async (response)=>{
             props.setLikes(response.data);
         })
         e.stopPropagation(); 

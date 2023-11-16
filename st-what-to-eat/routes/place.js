@@ -84,7 +84,6 @@ router.put('/like', isLoggedIn, async (req, res, next) => {
 })
 
 
-
 module.exports = router;
 
 // export하고 server.js에 import하기

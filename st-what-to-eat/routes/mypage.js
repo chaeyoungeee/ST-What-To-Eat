@@ -54,6 +54,12 @@ router.delete('/like/delete', isLoggedIn, async (req, res, next) => {
         return data
     }))
 
+    await db.collection('place').updateOne({ _id: new ObjectId(req.query.id) }, {
+        $inc: {
+            like: -1
+        }
+    })
+
     console.log(likes)
     res.json(likes)
 });
