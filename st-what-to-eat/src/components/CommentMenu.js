@@ -1,8 +1,8 @@
-import { Row, Col } from "react-bootstrap";
-import { AiFillLike, AiFillDislike, AiFillHeart, AiOutlineLike } from "react-icons/ai"
-import { RiDeleteBinLine, RiEdit2Line, RiChat1Line } from "react-icons/ri"
-import { IoChatboxOutline } from "react-icons/io5"
-import { BiLike, BiChat } from "react-icons/bi"
+import { Row, Col } from 'react-bootstrap';
+import { AiFillLike, AiFillDislike, AiFillHeart, AiOutlineLike } from 'react-icons/ai';
+import { RiDeleteBinLine, RiEdit2Line, RiChat1Line } from 'react-icons/ri';
+import { IoChatboxOutline } from 'react-icons/io5';
+import { BiLike, BiChat } from 'react-icons/bi';
 
 function CommentMenu(props) {
     // props: type, user_id, current_login_id
@@ -12,9 +12,11 @@ function CommentMenu(props) {
                     <p>추천</p>
                     <p>수정/삭제</p> */}
             <Row className="comment-menu">
-                {props.type == 'comment' ? <Col>
-                    <RiChat1Line className="icon"></RiChat1Line>
-                </Col> : null }
+                {props.type == 'comment' ? (
+                    <Col>
+                        <RiChat1Line className="icon"></RiChat1Line>
+                    </Col>
+                ) : null}
                 <Col>
                     <BiLike className="icon"></BiLike>
                 </Col>
@@ -25,8 +27,8 @@ function CommentMenu(props) {
                     <RiDeleteBinLine className="icon"></RiDeleteBinLine>
                 </Col>
             </Row>
-        </Col >
-    )
+        </Col>
+    );
 }
 
 export default CommentMenu;

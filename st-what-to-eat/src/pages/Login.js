@@ -1,12 +1,11 @@
-import { Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Row, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import navericon from '../imgs/naver-login.png';
 import kakaoicon from '../imgs/kakao-login.png';
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { setIsLogin } from "../store";
-import { useDispatch } from "react-redux";
-
+import { setIsLogin } from '../store';
+import { useDispatch } from 'react-redux';
 
 function Login() {
     let navigate = useNavigate();
@@ -14,55 +13,72 @@ function Login() {
     const [loginMessage, setLoginMessage] = useState('');
     const [formData, setFormData] = useState({ username: '', password: '' });
 
-
-    let [fade, setFade] = useState('')
+    let [fade, setFade] = useState('');
 
     useEffect(() => {
-        setTimeout(() => { setFade('end') }, 300)
+        setTimeout(() => {
+            setFade('end');
+        }, 300);
 
         return () => {
-            setFade('')
-        }
-    }, [])
-
-
+            setFade('');
+        };
+    }, []);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-
-
     const handleLogin = async (e) => {
         e.preventDefault();
 
-            await axios.post('/login', {
-                    username: formData.username,
-                    password: formData.password
-            }).then((response)=>{
-                dispatch(setIsLogin(true))
-                alert(response.data.nickname + '님 환영합니다.')
-                navigate('/')
-            }
-            ).catch((error)=>{
+        await axios
+            .post('/login', {
+                username: formData.username,
+                password: formData.password,
+            })
+            .then((response) => {
+                dispatch(setIsLogin(true));
+                alert(response.data.nickname + '님 환영합니다.');
+                navigate('/');
+            })
+            .catch((error) => {
                 setLoginMessage(error.response.data);
-            }
-            )
-    }
+            });
+    };
 
     return (
         <div id="login" className="first center">
-            <form onSubmit={handleLogin} className={"form-box start " + fade} action="/login" method="POST">
+            <form onSubmit={handleLogin} className={'form-box start ' + fade} action="/login" method="POST">
                 <h2>Login</h2>
-                <input type="text" name="username" value={formData.username}
-                    onChange={handleInputChange} placeholder="username"/>
-                <input name="password" value={formData.password}
-                    onChange={handleInputChange} placeholder="password" type="password"/>
+                <input
+                    type="text"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleInputChange}
+                    placeholder="username"
+                />
+                <input
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    placeholder="password"
+                    type="password"
+                />
 
-                <button className="login" type="submit">Login</button>
+                <button className="login" type="submit">
+                    Login
+                </button>
 
-                <button onClick={() => { navigate("/join") }}class="join">Join</button>
+                <button
+                    onClick={() => {
+                        navigate('/join');
+                    }}
+                    class="join"
+                >
+                    Join
+                </button>
                 <p>{loginMessage}</p>
 
                 <Row className="social-login">
@@ -75,12 +91,9 @@ function Login() {
                     </Col>
                     <Col xs={4}></Col>
                 </Row>
-            </form> 
-
-
-
+            </form>
         </div>
-    )
+    );
 }
 
 export default Login;

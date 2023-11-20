@@ -3,7 +3,6 @@ const axios = require('axios');
 // Google Geocoding API 키
 const apiKey = 'AIzaSyAXA_5Tlxv8zB_U-94P7X0GdnklwiSG0qA';
 
-
 // 주소를 위도와 경도로 변환하는 함수
 async function geocodeAddress(address) {
     try {
@@ -30,15 +29,13 @@ async function geocodeAddress(address) {
     }
 }
 
-address = '서울 노원구 공릉로 213 102동 1층'
+address = '서울 노원구 공릉로 213 102동 1층';
 geocodeAddress(address)
     .then((location) => {
         console.log(`[${location.latitude}, ${location.longitude}]`);
 
-        coor = (location.latitude, location.longitude)
-        
+        coor = (location.latitude, location.longitude);
     })
     .catch((error) => {
         console.error(error);
-});
-
+    });

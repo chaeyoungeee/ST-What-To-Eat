@@ -1,7 +1,7 @@
 module.exports = {
     async isLoggedIn(req, res, next) {
-        console.log(req)
-        console.log(req.isAuthenticated())
+        console.log(req);
+        console.log(req.isAuthenticated());
         if (req.isAuthenticated()) {
             next();
         } else {
@@ -15,4 +15,4 @@ module.exports = {
             res.status(403).send('로그인 상태입니다.');
         }
     },
-}
+};
