@@ -11,7 +11,7 @@ const ObjectId = require('mongodb').ObjectId;
 const { isLoggedIn, isNotLoggedIn } = require('../middlewares/authCheck.js');
 const { PiCornersOutLight } = require('react-icons/pi');
 
-
+const { checkLogin } = require('../middlewares/checkLogin.js');
 
 let db;
 connectDB
@@ -52,7 +52,7 @@ router.get('/', async (req, res) => {
 
 
 
-router.put('/recommend', isLoggedIn, async (req, res) => {
+router.put('/recommend', checkLogin, async (req, res) => {
     await db.collection('place').updateOne({ _id: new ObjectId(req.body.id) }, {
         $inc: {
             recommend: 1
@@ -61,7 +61,7 @@ router.put('/recommend', isLoggedIn, async (req, res) => {
     res.json(true);
 })
 
-router.put('/unrecommend', isLoggedIn, async (req, res) => {
+router.put('/unrecommend', checkLogin, async (req, res) => {
     await db.collection('place').updateOne({ _id: new ObjectId(req.body.id) }, {
         $inc: {
             unrecommend: 1
@@ -70,7 +70,7 @@ router.put('/unrecommend', isLoggedIn, async (req, res) => {
     res.json(true);
 })
 
-router.put('/like', isLoggedIn, async (req, res, next) => {
+router.put('/like', checkLogin, async (req, res, next) => {
     await db.collection('place').updateOne({ _id: new ObjectId(req.body.id) }, {
         $inc: {
             like: 1

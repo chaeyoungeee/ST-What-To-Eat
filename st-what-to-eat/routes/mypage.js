@@ -1,3 +1,4 @@
+
 // s3
 const { S3Client } = require('@aws-sdk/client-s3')
 const multer = require('multer')
@@ -9,6 +10,7 @@ let connectDB = require("../database.js");
 const { redirect } = require('react-router-dom');
 const ObjectId = require('mongodb').ObjectId;
 const { isLoggedIn, isNotLoggedIn } = require('../middlewares/authCheck.js');
+const { checkLogin } = require('../middlewares/checkLogin.js')
 
 
 
@@ -32,7 +34,7 @@ const s3 = new S3Client({
     }
 })
 
-router.get('/', isLoggedIn, async (req, res, next) => {
+router.get('/', checkLogin, async (req, res, next) => {
     let user = await db.collection('user').findOne({ username: req.user.username})
     let likes = await Promise.all( user.likes.map(async (id)=>{
         let data = await db.collection('place').findOne({ _id: new ObjectId(id)})
@@ -42,7 +44,7 @@ router.get('/', isLoggedIn, async (req, res, next) => {
    res.json(likes)
 })
 
-router.delete('/like/delete', isLoggedIn, async (req, res, next) => {
+router.delete('/like/delete', async (req, res, next) => {
     console.log(req.query.id);
     await db.collection('user').updateOne(
         { username: req.user.username },

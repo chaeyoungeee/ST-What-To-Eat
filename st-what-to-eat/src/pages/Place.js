@@ -4,7 +4,7 @@ import { AiFillLike, AiFillDislike, AiFillHeart, AiOutlineLike } from "react-ico
 import { RiDeleteBinLine, RiEdit2Line, RiChat1Line } from "react-icons/ri"
 import { IoChatboxOutline } from "react-icons/io5"
 import { BiLike, BiChat } from "react-icons/bi"
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Comment from "../components/Comment";
@@ -12,8 +12,10 @@ import CommentInput from "../components/CommentInput";
 import { useSelector } from "react-redux";
 import axios from 'axios'
 
+
 function Place() {
     let { id } = useParams();
+    const navigate = useNavigate();
 
     let places = useSelector(state=>state.places);
     let place = places.find((ele)=>{
@@ -62,8 +64,9 @@ function Place() {
             id: id
         }).then((response)=>{
             if (response.data == true) setRecommend(++recommend)
-            else alert(response.data)
-        })
+        }).catch((error) => {
+            alert('로그인하세요.')
+        });
     }
     
     let handleUnRecommendClick = async () => {
@@ -71,8 +74,9 @@ function Place() {
             id: id
         }).then((response) => {
             if (response.data == true) setUnrecommend(++unrecommend)
-            else alert(response.data)
-        })
+        }).catch((error) => {
+            alert('로그인하세요.')
+        });
     }
 
     let handleLikeClick = async () => {
@@ -80,9 +84,9 @@ function Place() {
             id: id
         }).then((response) => {
             if (response.data == true) setLike(++like)
-            else alert(response.data)
-            
-        })
+        }).catch((error) => {
+            alert('로그인하세요.')
+        });
     }
 
     if (!place) return (<div id="place" className="first loading">

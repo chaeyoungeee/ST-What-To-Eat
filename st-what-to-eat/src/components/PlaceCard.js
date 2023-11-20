@@ -1,16 +1,10 @@
-import { Card, Button } from 'react-bootstrap'
-import food from '../imgs/food1.jpg';
 import { VscCircleFilled } from "react-icons/vsc"
 import { motion } from "framer-motion";
 import { AiFillLike, AiTwotoneHeart } from "react-icons/ai"
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
-import { Row, Col } from 'react-bootstrap';
 import { TiDelete } from "react-icons/ti";
-
-import { IoIosRemoveCircle } from "react-icons/io";
 
 function PlaceCard(props) {
 
@@ -48,7 +42,6 @@ function PlaceCard(props) {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                 <div className='card-img'>
-                    {console.log(props.mypage)}
                 { props.mypage == true &&
                     <TiDelete
                     className='delete-btn'

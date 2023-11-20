@@ -44,6 +44,8 @@ app.get('/', (req, res) => {
 
 
 
+
+
 const bcrypt = require('bcrypt')
 // passport, passport-local, express-session 라이브러리 세팅
 const session = require('express-session')
@@ -147,6 +149,8 @@ app.use('/img', require('./routes/placeDB.js'))
 
 
 app.use('/place', require('./routes/place.js'))
+
+
 
 app.use('/mypage', require('./routes/mypage.js'))
 

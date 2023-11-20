@@ -2,18 +2,21 @@ import { useEffect } from "react";
 import Grid from "../components/Grid";
 import { useState } from "react";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 function Mypage() {
-    let [fade, setFade] = useState('')
+    let [fade, setFade] = useState('');
+    let navigate = useNavigate();
 
 
     let [likes, setLikes] = useState(null);
     useEffect(()=>{
         axios.get('/mypage').then((response)=>{
             setLikes(response.data)
-            console.log(response.data)
-        })
+        }).catch((error) => {
+            navigate('/login')
+        });
 
         setTimeout(() => { setFade('end') }, 300)
         return () => {
