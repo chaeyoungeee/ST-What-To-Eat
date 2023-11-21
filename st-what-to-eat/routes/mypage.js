@@ -15,7 +15,6 @@ connectDB
 
 router.get('/', checkLogin, async (req, res, next) => {
     let user = await db.collection('user').findOne({ username: req.user.username });
-    console.log(user.likes);
     if (user.likes == undefined) res.json([]);
     else {
         let likes = await Promise.all(

@@ -23,61 +23,30 @@
 
 :root {
     --white: #ffffff;
-    --light: #f2f2f6;
     --green: #31df7f;
-    --dark: #9f9f9f;
+    --lightGreen: rgb(166, 247, 204);
     --black: #282832;
     --blue: #288cff;
     --red: #ff4f6d;
-
-    --lightGreen: rgb(166, 247, 204);
-    --moonYellow: #ffffc4;
-
-    --grey: #e8e6e2;
-    --dark1: #161618;
-    --dark3: #232326;
-    --dark4: #28282c;
-    --dark5: #2e2e32;
-    --dark6: #34343a;
-    --dark8: #5842c3;
-    --dark9: #706f78;
-    --dark10: #7e7d86;
-    --dark11: #a09fa6;
-    --dark12: #ededef;
-    --light3: #f4f2f4;
-    --light5: #e9e8ea;
-    --light6: #e4e2e4;
-    --light9: #908e96;
-    --light10: #86848d;
-    --darkViolet4: #2c2250;
-    --darkViolet6: #392c72;
-    --violet1: #fdfcfe;
-    --violet3: #f5f2ff;
-    --violet4: #ede9fe;
-    --violet6: #d7cff9;
-    --violet8: #aa99ec;
+    --dark: #9f9f9f;
+    --light: #f2f2f6;
 
     --themeCardBgColor: var(--white);
-
     --themeTextColor: var(--black);
     --themeTitleColor: var(--black);
     --themeTitleBgColor: var(--green);
-
     --themeNavHover: var(--lightGreen);
     --themeSideNav: var(--green);
     --themeSideNavHover: var(--lightGreen);
-
     --themeFooterBgColor: var(--light3);
     --themeFooterInputColor: var(--midnightPurple);
-
     --themeScrollBarColor: var(--lightGreen);
-
     --themeLikeColor: var(--red);
     --themeRecommendColor: var(--blue);
-
     --themeIconColor: var(--black);
     --themeIconBgColor: var(--green);
 
+    --default-transition: 0.3s ease-in all;
     --boxBorderRadius: 2.5rem;
 }
 
@@ -121,7 +90,7 @@ body {
 .up {
     visibility: visible;
     transform: translateY(0);
-    transition: 0.3s ease all;
+    transition: var(--default-transition);
 }
 
 //fade-in 화면 전환
@@ -153,14 +122,14 @@ body {
     .main-bar {
         .nav-link {
             width: 11rem;
-            transition: 0.3s ease-in all;
+            transition: var(--default-transition);
 
             .menu-icon {
                 position: relative;
                 bottom: 0.1rem;
                 font-size: 0;
                 margin-right: 0.3rem;
-                transition: 0.3s ease-in all;
+                transition: var(--default-transition);
             }
 
             &:hover {
@@ -183,7 +152,7 @@ body {
             width: 3rem;
             height: 3rem;
             .icon {
-                transition: 0.3s ease-in all;
+                transition: var(--default-transition);
                 position: relative;
                 bottom: 0.1rem;
                 font-size: 1.3rem;
@@ -198,7 +167,7 @@ body {
         }
         .nav-link {
             background-color: var(--themeSideNav);
-            transition: 0.3s ease-in all;
+            transition: var(--default-transition);
             &:hover {
                 .icon {
                     color: var(--themeLikeColor);
@@ -316,7 +285,7 @@ li:last-of-type {
             }
         }
         img {
-            transition: transform 0.3s;
+            transition: var(--default-transition);
             border-top-right-radius: 1.3rem;
             border-top-left-radius: 1.3rem;
             height: 100%;
@@ -493,7 +462,7 @@ h3.title {
             font-size: 3rem;
             top: 0.8rem;
             left: 1.4rem;
-            transition: 0.4s all;
+            transition: var(--default-transition);
         }
     }
     .memoji2 {
@@ -687,7 +656,7 @@ textarea::placeholder {
                 width: 6rem;
                 height: 6rem;
                 font-size: 3rem;
-                transition: 0.3s ease-in background-color;
+                transition: var(--default-transition);
 
                 &:hover {
                     background-color: var(--lightGreen);
@@ -711,10 +680,10 @@ textarea::placeholder {
                     position: absolute;
                     top: 1.7rem;
                     left: 1.5rem;
-                    transition: 0.3s ease-in color;
+                    transition: var(--default-transition);
                 }
                 .like-icon {
-                    transition: 0.3s ease-in color;
+                    transition: var(--default-transition);
                     position: absolute;
                     top: 1.65rem;
                     left: 1.5rem;
@@ -903,7 +872,7 @@ textarea::placeholder {
     padding: 0.5rem 1rem;
     border-radius: 2rem;
     border: 1px solid var(--dark);
-    margin: 0.3rem -0.5rem
+    margin: 0.3rem -0.5rem;
 }
 
 #category,
@@ -933,56 +902,13 @@ textarea::placeholder {
         padding: 0 3rem;
     }
 
-    //----------  responsive breakpoints
-    //------------------------------------------------------------------------------
-    @mixin breakpoint($value) {
-        @if $value == 'phone' {
-            @media only screen and (min-width: 120px) and (max-width: 767px) {
-                @content;
-            }
-        } @else if $value == 'tablet' {
-            @media only screen and (min-width: 768px) and (max-width: 1024px) {
-                @content;
-            }
-        } @else if $value == 'touch' {
-            @media only screen and (min-width: 120px) and (max-width: 1024px) {
-                @content;
-            }
-        } @else if $value == 'desktop' {
-            @media only screen and (min-width: 1025px) {
-                @content;
-            }
-        } @else {
-            @media only screen and (max-width: $value) {
-                @content;
-            }
-        }
-    }
-
-    // Colors
-    $white: #fff;
-    $black: #000;
-    $grey: #595959;
-    $grey-dark: #2b2b2b;
-    $grey-light: #eee;
-    $green: #86c023;
-    $blue: #017ac7;
-
-    // Transition
-    $duration: 400ms;
-    $easing: ease;
-
-    //----------  reset
-    //------------------------------------------------------------------------------
     a {
         text-decoration: none;
     }
 
-    //----------  pagination
-    //------------------------------------------------------------------------------
     .pagination-wrapper {
         text-align: center;
-        margin: 40px 0;
+        margin: 2.5rem 0;
     }
 
     .pagination {
@@ -991,19 +917,13 @@ textarea::placeholder {
         padding: 0 1.5rem;
         border-radius: 2rem;
         background-color: var(--black);
-
-        @include breakpoint(1199px) {
-            margin-top: 50px;
-            padding: 0 10px;
-            border-radius: 25px;
-        }
     }
 
     .page-numbers {
         display: block;
-        padding: 0 25px;
+        padding: 0 1.5rem;
         float: left;
-        transition: $duration $easing;
+        transition: var(--default-transition);
         color: var(--white);
         letter-spacing: 0.1em;
         line-height: 3.5rem;
@@ -1011,49 +931,13 @@ textarea::placeholder {
         &:hover,
         &.current {
             background-color: var(--green);
-            color: $white;
+            color: var(--white);
         }
 
         &.prev:hover,
         &.next:hover {
             background-color: transparent;
             color: var(--green);
-        }
-
-        @include breakpoint(1199px) {
-            padding: 0 15px;
-            line-height: 2.5rem;
-        }
-
-        @include breakpoint(touch) {
-            padding: 0 14px;
-            display: none;
-
-            &:nth-of-type(2) {
-                position: relative;
-                padding-right: 50px;
-
-                &::after {
-                    content: '...';
-                    position: absolute;
-                    font-size: 25px;
-                    top: 0;
-                    left: 45px;
-                }
-            }
-
-            &:nth-child(-n + 3),
-            &:nth-last-child(-n + 3) {
-                display: block;
-            }
-
-            &:nth-last-child(-n + 4) {
-                padding-right: 14px;
-
-                &::after {
-                    content: none;
-                }
-            }
         }
     }
 }
@@ -1063,7 +947,6 @@ textarea::placeholder {
     padding: 0rem 4rem 1em;
 }
 
-
 .tossface {
-  font-family: Tossface;
+    font-family: Tossface;
 }

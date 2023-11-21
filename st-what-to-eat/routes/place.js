@@ -1,4 +1,3 @@
-
 const router = require('express').Router();
 let connectDB = require('../database.js');
 const ObjectId = require('mongodb').ObjectId;
@@ -12,7 +11,6 @@ connectDB
     .catch((err) => {
         console.log(err);
     });
-
 
 router.get('/', async (req, res) => {
     let data = await db.collection('place').find().toArray();
@@ -55,22 +53,40 @@ router.put('/unrecommend', checkLogin, async (req, res) => {
 });
 
 router.put('/like', checkLogin, async (req, res, next) => {
-    await db.collection('place').updateOne(
-        { _id: new ObjectId(req.body.id) },
-        {
-            $inc: {
-                like: 1,
-            },
-        }
-    );
+    let data = await db
+        .collection('user')
+        .find({
+            _id: new ObjectId(req.user._id),
+        })
+        .toArray();
+    let likes = data[0];
+    likes = likes.likes;
+    let isAlready = likes.find((id) => {
+        console.log(id);
+        console.log(req.body.id);
+        console.log(new ObjectId(id).equals(new ObjectId(req.body.id)));
+        return new ObjectId(id).equals(new ObjectId(req.body.id));
+    });
+    if (isAlready) {
+        res.status(402).send('이미 즐겨찾기한 음식점입니다.');
+    } else {
+        await db.collection('place').updateOne(
+            { _id: new ObjectId(req.body.id) },
+            {
+                $inc: {
+                    like: 1,
+                },
+            }
+        );
 
-    await db.collection('user').updateOne(
-        { username: req.user.username },
-        {
-            $push: { likes: req.body.id },
-        }
-    );
-    res.json(true);
+        await db.collection('user').updateOne(
+            { username: req.user.username },
+            {
+                $push: { likes: req.body.id },
+            }
+        );
+        res.json(true);
+    }
 });
 
 module.exports = router;

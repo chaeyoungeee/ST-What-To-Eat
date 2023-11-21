@@ -86,7 +86,7 @@ function Place() {
                 if (response.data == true) setRecommend(++recommend);
             })
             .catch((error) => {
-                alert('로그인하세요.');
+                alert(error.response.data);
             });
     };
 
@@ -99,7 +99,7 @@ function Place() {
                 if (response.data == true) setUnrecommend(++unrecommend);
             })
             .catch((error) => {
-                alert('로그인하세요.');
+                alert(error.response.data);
             });
     };
 
@@ -112,7 +112,7 @@ function Place() {
                 if (response.data == true) setLike(++like);
             })
             .catch((error) => {
-                alert('로그인하세요.');
+                alert(error.response.data);
             });
     };
 
