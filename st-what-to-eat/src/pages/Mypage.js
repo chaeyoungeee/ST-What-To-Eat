@@ -27,13 +27,6 @@ function Mypage() {
         };
     }, []);
 
-    if (likes == undefined)
-        return (
-            <div className="first loading">
-                <div className={'start ' + fade}></div>
-            </div>
-        );
-
     return (
         <div id="mypage" className="first">
             <div className={'start ' + fade}>

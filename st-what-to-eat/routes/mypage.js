@@ -13,16 +13,19 @@ connectDB
         console.log(err);
     });
 
-
 router.get('/', checkLogin, async (req, res, next) => {
     let user = await db.collection('user').findOne({ username: req.user.username });
-    let likes = await Promise.all(
-        user.likes.map(async (id) => {
-            let data = await db.collection('place').findOne({ _id: new ObjectId(id) });
-            return data;
-        })
-    );
-    res.json(likes);
+    console.log(user.likes);
+    if (user.likes == undefined) res.json([]);
+    else {
+        let likes = await Promise.all(
+            user.likes.map(async (id) => {
+                let data = await db.collection('place').findOne({ _id: new ObjectId(id) });
+                return data;
+            })
+        );
+        res.json(likes);
+    }
 });
 
 router.delete('/like/delete', async (req, res, next) => {
