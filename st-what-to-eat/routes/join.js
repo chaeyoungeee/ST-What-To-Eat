@@ -15,11 +15,39 @@ connectDB
     });
 
 router.post('/', async (req, res) => {
+    if (req.body.nickname == '') return res.status(404).send('닉네임을 입력하세요.');
+    else if (req.body.username == '') return res.status(404).send('아이디를 입력하세요.');
+    else if (req.body.password == '') return res.status(404).send('패스워드를 입력하세요.');
+
+    let isNicknameExist = await db
+        .collection('user')
+        .find({
+            nickname: req.body.nickname,
+        })
+        .toArray();
+    if (isNicknameExist.length != 0) {
+       return res.status(404).send('이미 존재하는 닉네임입니다.');
+    }
+
+    let isUsernameExist = await db
+        .collection('user')
+        .find({
+            username: req.body.username,
+        })
+        .toArray();
+    if (isUsernameExist.length != 0) {
+        return res.status(404).send('이미 존재하는 아이디입니다.');
+    }
+
+    if (req.body.password.length < 4) {
+        return res.status(404).send('"비밀번호는 4글자 이상이어야 합니다.');
+    }
+
+
     let hash = await bcrypt.hash(req.body.password, 10);
     console.log(hash);
 
     await db.collection('user').insertOne({
-        //! 추가해야할 1) username이나 password가 빈칸이거나 짧을 때, username이 이미 db에 존재할 때 예외 처리
         username: req.body.username,
         password: hash,
         nickname: req.body.nickname,

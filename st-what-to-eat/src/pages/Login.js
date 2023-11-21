@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 function Login() {
     let navigate = useNavigate();
     let dispatch = useDispatch();
-    const [loginMessage, setLoginMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const [formData, setFormData] = useState({ username: '', password: '' });
 
     let [fade, setFade] = useState('');
@@ -28,6 +28,7 @@ function Login() {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+  
     };
 
     const handleLogin = async (e) => {
@@ -44,7 +45,7 @@ function Login() {
                 navigate('/');
             })
             .catch((error) => {
-                setLoginMessage(error.response.data);
+                setErrorMessage(error.response.data);
             });
     };
 
@@ -57,7 +58,7 @@ function Login() {
                     name="username"
                     value={formData.username}
                     onChange={handleInputChange}
-                    placeholder="username"
+                    placeholder="id"
                 />
                 <input
                     name="password"
@@ -79,7 +80,7 @@ function Login() {
                 >
                     Join
                 </button>
-                <p>{loginMessage}</p>
+                <p>{errorMessage}</p>
 
                 <Row className="social-login">
                     <Col xs={4}></Col>
