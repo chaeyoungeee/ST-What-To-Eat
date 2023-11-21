@@ -5,20 +5,31 @@ import { VscCircleFilled } from 'react-icons/vsc';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Grid from '../components/Grid';
+import { initPlaces } from '../store';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
 function Category() {
+    const dispatch = useDispatch();
     let places = useSelector((state) => {
         return state.places;
     });
 
     let category = useSelector((state) => state.category);
-    let [pl, setPl] = useState([...places]);
+    let [pl, setPl] = useState([...places].reverse());
     let [selectedCategory, setSelectedCategory] = useState('전체');
     let [selectedSorting, setSelectedSorting] = useState('최신순');
     let [fade, setFade] = useState('');
 
     useEffect(() => {
-        setPl(pl);
+        if (places.length == 0) {
+            axios.get('/place').then((res) => {
+                dispatch(initPlaces(res.data));
+            });
+        }
+    });
+
+    useEffect(() => {
         handleSortingClick(selectedSorting);
         setTimeout(() => {
             setFade('end');
@@ -28,15 +39,19 @@ function Category() {
         };
     }, []);
 
+    useEffect(() => {
+        setPl([...places].reverse());
+    }, [places]);
+
     const handleCategoryClick = (category) => {
         setSelectedSorting('최신순');
         setSelectedCategory(category);
         if (category == '전체') {
-            setPl([...places]);
+            setPl([...places].reverse());
         } else {
             let k = places.filter((ele) => ele.category === category);
 
-            setPl([...k]);
+            setPl([...k].reverse());
         }
     };
 
@@ -58,6 +73,15 @@ function Category() {
             setPl([...pl].reverse());
         }
     };
+
+    // if (pl.length == 0)
+    //     return (
+    //         <div className="first loading">
+    //             <div className={'start ' + fade}></div>
+    //         </div>
+    //     );
+
+    console.log(pl);
 
     return (
         <div id="category" className="first">
