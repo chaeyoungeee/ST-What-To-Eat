@@ -29,6 +29,14 @@ function MainNav() {
     //   }
     // }, [])
 
+    useEffect(()=>{
+        axios.get('/user').then((response) => {
+            dispatch(setIsLogin(true));
+        }).catch((error)=>{
+            dispatch(setIsLogin(false));
+        });
+    }, [])
+
     let navigate = useNavigate();
     const handleLogout = async () => {
         await axios.get('/logout').then((response) => {

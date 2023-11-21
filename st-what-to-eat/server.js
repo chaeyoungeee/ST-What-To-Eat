@@ -1,3 +1,5 @@
+const { checkLogin } = require('./middlewares/checkLogin.js');
+
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -52,7 +54,7 @@ app.use(
         secret: process.env.SECRET_PW,
         resave: false,
         saveUninitialized: false,
-        cookie: { maxAge: 60 * 60 * 1000 }, // session 유지 시간 (1시간)
+        cookie: { maxAge: 24 * 60 * 60 * 1000 }, // session 유지 시간 (24시간)
         store: MongoStore.create({
             mongoUrl: process.env.DB_URL,
             dbName: 'stplace',
@@ -124,9 +126,9 @@ app.get('/logout', (req, res, next) => {
     });
 });
 
-app.get('/user', async (req, res, next)=> {
-    res.json(req.user)
-})
+app.get('/user', checkLogin, async (req, res, next) => {
+    res.json(req.user);
+});
 // export하고 server.js에 import하기
 
 // 이미지 업로드

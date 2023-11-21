@@ -23,7 +23,11 @@ function Comment(props) {
         await axios.get('/user').then((response) => {
             console.log(response.data);
             if (props.comment.user_id == response.data._id) setEdit(!edit);
-            else alert(`${response.data.nickname}님이 작성한 댓글이 아닙니다.`);
+            else {
+                alert(`${response.data.nickname}님이 작성한 댓글이 아닙니다.`);
+            }
+        }).catch((error)=>{
+            alert('로그인하세요.')
         });
     };
 
