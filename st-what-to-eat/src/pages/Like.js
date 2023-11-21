@@ -22,7 +22,7 @@ function Like() {
 
     return (
         <div id="like" className=" text-start">
-            <h1>🥳</h1>
+            <h1 className='toss'>🥳</h1>
             <h3 className="title">Like</h3>
             <p className="desc">많은 사람들이 가보고 싶어하는 음식점에 가보는 건 어떨까요?</p>
             {sortedPlaces.slice(0, 3).map((place, i) => {

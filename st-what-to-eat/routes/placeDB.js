@@ -40,7 +40,6 @@ let data = {
 let db;
 connectDB
     .then((client) => {
-        console.log('DB(음식적 업로드용) 연결 성공');
         db = client.db('stplace');
     })
     .catch((err) => {
@@ -70,12 +69,10 @@ router.post('/upload', async (req, res) => {
     upload.array('img', 3)(req, res, async (err) => {
         if (err) console.log(err);
         else {
-            console.log(req.files);
             for (file of req.files) {
                 data['imgs'].push(file.location);
             }
         }
-        console.log(data);
 
         let d = db.collection('place').insertOne(data);
 

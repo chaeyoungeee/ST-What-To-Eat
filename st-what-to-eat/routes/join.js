@@ -8,7 +8,6 @@ let connectDB = require('../database.js');
 let db;
 connectDB
     .then((client) => {
-        console.log('DB 연결 성공');
         db = client.db('stplace');
     })
     .catch((err) => {

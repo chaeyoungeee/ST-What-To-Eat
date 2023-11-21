@@ -1,9 +1,6 @@
 import MapNaverDefault from '../components/MapNaverDefault';
 import { Row, Col } from 'react-bootstrap';
-import { AiFillLike, AiFillDislike, AiFillHeart, AiOutlineLike } from 'react-icons/ai';
-import { RiDeleteBinLine, RiEdit2Line, RiChat1Line } from 'react-icons/ri';
-import { IoChatboxOutline } from 'react-icons/io5';
-import { BiLike, BiChat } from 'react-icons/bi';
+import { AiFillLike, AiFillDislike, AiFillHeart } from 'react-icons/ai';
 import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
@@ -14,12 +11,15 @@ import axios from 'axios';
 
 function Place() {
     let { id } = useParams();
-    const navigate = useNavigate();
 
     let places = useSelector((state) => state.places);
-    let place = places.find((ele) => {
-        return ele._id == id;
-    });
+    let [place, setPlace] = useState(
+        places.find((ele) => {
+            return ele._id == id;
+        })
+    );
+
+    let [comments, setComments] = useState([]);
 
     let [fade, setFade] = useState('');
 
@@ -32,6 +32,27 @@ function Place() {
             setFade('');
         };
     }, []);
+
+    useEffect(() => {
+        setPlace(
+            places.find((ele) => {
+                return ele._id == id;
+            })
+        );
+    }, [places]);
+
+    useEffect(() => {
+        if (place != undefined) {
+            axios
+                .get('/comment', {
+                    params: { place_id: place._id },
+                })
+                .then((response) => {
+                    setComments([...response.data]);
+                })
+                .catch((error) => {});
+        }
+    }, [place]);
 
     // let [imgSrc, setImgSrc] = useState(place['imgs'][0])
 
@@ -182,8 +203,13 @@ function Place() {
             </div>
 
             <div className="text-start">
-                <CommentInput type="comment" />
-                <Comment />
+                <CommentInput id={place._id} comments={comments} setComments={setComments} type="comment" />
+                {comments
+                    .slice(0)
+                    .reverse()
+                    .map((comment) => {
+                        return <Comment comments={comments} setComments={setComments} comment={comment} />;
+                    })}
             </div>
         </div>
     );

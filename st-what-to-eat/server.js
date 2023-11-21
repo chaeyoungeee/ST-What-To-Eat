@@ -124,6 +124,9 @@ app.get('/logout', (req, res, next) => {
     });
 });
 
+app.get('/user', async (req, res, next)=> {
+    res.json(req.user)
+})
 // export하고 server.js에 import하기
 
 // 이미지 업로드
@@ -134,7 +137,8 @@ app.use('/place', require('./routes/place.js'));
 
 app.use('/mypage', require('./routes/mypage.js'));
 
+app.use('/comment', require('./routes/comment.js'));
+
 app.get('*', (req, res) => {
-    console.log(req.user);
     res.sendFile(path.join(__dirname, 'build/index.html'));
 });

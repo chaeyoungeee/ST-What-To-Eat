@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+@import url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css');
+
 @font-face {
     font-family: 'gt-flexa';
     src: url('./font/GT-Flexa/GT-Flexa-Extended-Black-Trial.woff2');
@@ -834,13 +836,14 @@ textarea::placeholder {
 .comment {
     p,
     h5 {
-        margin: 0;
+        font-weight: 700;
+        margin: 0.2rem 0;
         padding: 0;
     }
     background-color: var(--white);
-    margin: 2rem 2rem 0rem;
+    margin: 1rem 2rem;
     border-radius: var(--boxBorderRadius);
-    padding: 2rem 2.5rem;
+    padding: 2.5rem 2.5rem;
 
     .reply-comment {
         background-color: var(--light);
@@ -892,6 +895,15 @@ textarea::placeholder {
         border-radius: 2rem;
         border: none;
     }
+}
+
+.edit-input {
+    width: 163%;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    border: 1px solid var(--dark);
+    margin: 0.3rem -0.5rem
 }
 
 #category,
@@ -1049,4 +1061,9 @@ textarea::placeholder {
 .title-pd {
     text-align: start;
     padding: 0rem 4rem 1em;
+}
+
+
+.tossface {
+  font-family: Tossface;
 }
