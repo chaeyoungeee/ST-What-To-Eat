@@ -212,6 +212,10 @@ body {
     }
 }
 
+.br {
+    border-radius: var(--boxBorderRadius) !important;
+}
+
 // img 슬라이더
 .img-slider {
     position: relative;

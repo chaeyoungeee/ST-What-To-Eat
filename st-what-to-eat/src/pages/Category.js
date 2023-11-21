@@ -15,6 +15,8 @@ function Category() {
         return state.places;
     });
 
+    
+
     let category = useSelector((state) => state.category);
     let [pl, setPl] = useState([...places].reverse());
     let [selectedCategory, setSelectedCategory] = useState('전체');
@@ -81,7 +83,6 @@ function Category() {
     //         </div>
     //     );
 
-    console.log(pl);
 
     return (
         <div id="category" className="first">

@@ -12,6 +12,7 @@ import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { setIsLogin } from '../store';
+import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 function MainNav() {
@@ -19,6 +20,7 @@ function MainNav() {
     let isLogin = useSelector((state) => {
         return state.isLogin;
     });
+    const [br, setBr] = useState('')
     const dispatch = useDispatch();
 
     // useEffect(() => {
@@ -29,13 +31,16 @@ function MainNav() {
     //   }
     // }, [])
 
-    useEffect(()=>{
-        axios.get('/user').then((response) => {
-            dispatch(setIsLogin(true));
-        }).catch((error)=>{
-            dispatch(setIsLogin(false));
-        });
-    }, [])
+    useEffect(() => {
+        axios
+            .get('/user')
+            .then((response) => {
+                dispatch(setIsLogin(true));
+            })
+            .catch((error) => {
+                dispatch(setIsLogin(false));
+            });
+    }, []);
 
     let navigate = useNavigate();
     const handleLogout = async () => {
@@ -45,8 +50,20 @@ function MainNav() {
         });
     };
 
+    const location = useLocation();
+    const [currentUrl, setCurrentUrl] = useState(location.pathname);
+
+    useEffect(() => {
+        setCurrentUrl(location.pathname);
+        if (location.pathname == '/best' || location.pathname == '/randomlike') {
+            setBr('br');
+        } else {
+            setBr('');
+        }
+    }, [location.pathname]);
+
     return (
-        <Navbar id="navbar" expand="md" className={'bg-body-tertiary'}>
+        <Navbar id="navbar" expand="md" className={`bg-body-tertiary ${br}`}>
             <Container>
                 <motion.div whileHover={{ scale: 1.3 }} transition={{ type: 'spring', stiffness: 400, damping: 10 }}>
                     <Navbar.Brand
@@ -60,14 +77,36 @@ function MainNav() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="main-bar">
-                        <Nav.Link href="#best">
-                            <FiAward className="menu-icon"></FiAward>
-                            Best 7
-                        </Nav.Link>
-                        <Nav.Link href="#random">
-                            <PiBowlFood className="menu-icon"></PiBowlFood>
-                            Random & Like
-                        </Nav.Link>
+                        {currentUrl == '/' ? (
+                            <Nav.Link href="#best">
+                                <FiAward className="menu-icon"></FiAward>
+                                Best 7
+                            </Nav.Link>
+                        ) : (
+                            <Nav.Link
+                                onClick={() => {
+                                    navigate('/best');
+                                }}
+                            >
+                                <FiAward className="menu-icon"></FiAward>
+                                Best 7
+                            </Nav.Link>
+                        )}
+                        {currentUrl == '/' ? (
+                            <Nav.Link href="#random">
+                                <PiBowlFood className="menu-icon"></PiBowlFood>
+                                Random & Like
+                            </Nav.Link>
+                        ) : (
+                            <Nav.Link
+                                onClick={() => {
+                                    navigate('/randomlike');
+                                }}
+                            >
+                                <PiBowlFood className="menu-icon"></PiBowlFood>
+                                Random & Like
+                            </Nav.Link>
+                        )}
                         <Nav.Link
                             onClick={() => {
                                 navigate('/category');

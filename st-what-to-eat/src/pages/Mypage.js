@@ -13,7 +13,7 @@ function Mypage() {
         axios
             .get('/mypage')
             .then((response) => {
-                setLikes(response.data);
+                setLikes(response.data.reverse());
             })
             .catch((error) => {
                 navigate('/login');

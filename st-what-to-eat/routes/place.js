@@ -62,9 +62,6 @@ router.put('/like', checkLogin, async (req, res, next) => {
     let likes = data[0];
     likes = likes.likes;
     let isAlready = likes.find((id) => {
-        console.log(id);
-        console.log(req.body.id);
-        console.log(new ObjectId(id).equals(new ObjectId(req.body.id)));
         return new ObjectId(id).equals(new ObjectId(req.body.id));
     });
     if (isAlready) {
