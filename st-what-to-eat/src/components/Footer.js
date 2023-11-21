@@ -1,15 +1,37 @@
 import { HiOutlineMailOpen } from 'react-icons/hi';
 import { AiOutlinePhone } from 'react-icons/ai';
 
+import axios from 'axios';
+import { useState } from 'react';
+
 function Footer() {
+    const [input, setInput] = useState('');
+
+    const handleInputChange = (e) => {
+        setInput(e.target.value);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await axios
+            .post('/requirement', {
+                content: input,
+            })
+            .then((response) => {
+                alert(response.data);
+            })
+            .catch((error) => {
+                alert(error.response.data);
+            });
+    };
     return (
         <div id="footer">
             {/* <div className="footer-box">
                 <input placeholder="과기대 주변 맛집을 알려주세요!"></input>
             </div> */}
             <div className="require">
-                <form>
-                    <textarea placeholder="과기대 주변 맛집을 알려주세요!"></textarea>
+                <form onSubmit={handleSubmit}>
+                    <textarea onChange={handleInputChange} placeholder="과기대 주변 맛집을 알려주세요!"></textarea>
                     <input type="submit" value="Submit"></input>
                 </form>
             </div>

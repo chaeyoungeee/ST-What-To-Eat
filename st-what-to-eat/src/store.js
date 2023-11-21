@@ -45,31 +45,35 @@ let category = createSlice({
     name: 'category',
     initialState: [
         {
-            name: '면',
-            color: '#ff193c'
+            name: '한식',
+            color: '#ff193c',
         },
         {
-            name: '밥',
-            color: '#ffd900'
-        },
-        {
-            name: '파스타',
-            color: '#5724ff'
-        },
-        {
-            name: '찌개',
-            color: '#af24ff'
+            name: '양식',
+            color: '#af24ff',
         },
         {
             name: '일식',
-            color: '#ffaf24'
+            color: '#ffaf24',
         },
         {
             name: '떡볶이',
-            color: '#ff24bd'
+            color: '#ff24bd',
         },
-    ]
-})
+        {
+            name: '패스트푸드',
+            color: '#00d8f0',
+        },
+        {
+            name: '곱창/막창',
+            color: '#1f31ff',
+        },
+        {
+            name: '기타',
+            color: '#ffd900',
+        },
+    ],
+});
 
 export default configureStore({
     reducer: {

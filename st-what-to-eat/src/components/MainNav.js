@@ -20,7 +20,7 @@ function MainNav() {
     let isLogin = useSelector((state) => {
         return state.isLogin;
     });
-    const [br, setBr] = useState('')
+    const [br, setBr] = useState('');
     const dispatch = useDispatch();
 
     // useEffect(() => {

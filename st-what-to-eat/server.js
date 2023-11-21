@@ -131,6 +131,28 @@ app.get('/user', checkLogin, async (req, res, next) => {
 });
 // export하고 server.js에 import하기
 
+// app.get('/t', async (req, res) => {
+//     let data = await db
+//         .collection('place')
+//         .updateMany({ name: '서오롱피자' }, { $set: { recommend: 22 } });
+
+    // const documents = await db.collection('place').find().toArray();
+
+    // const shuffledDocuments = shuffleArray(documents);
+
+    // await db.collection('places').insertMany(shuffledDocuments);
+
+
+// });
+
+// function shuffleArray(array) {
+//     for (let i = array.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [array[i], array[j]] = [array[j], array[i]];
+//     }
+//     return array;
+// }
+
 // 이미지 업로드
 // s3
 app.use('/img', require('./routes/placeDB.js'));
@@ -140,6 +162,11 @@ app.use('/place', require('./routes/place.js'));
 app.use('/mypage', require('./routes/mypage.js'));
 
 app.use('/comment', require('./routes/comment.js'));
+
+app.use('/requirement', require('./routes/requirement.js'));
+
+
+
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build/index.html'));

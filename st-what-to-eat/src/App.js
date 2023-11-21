@@ -83,12 +83,7 @@ function App() {
                         </>
                     }
                 />
-                <Route
-                    path="/login"
-                    element={
-                        <Login />
-                    }
-                />
+                <Route path="/login" element={<Login />} />
                 <Route
                     path="/join"
                     element={
@@ -127,16 +122,21 @@ function App() {
                 <Route path="/place/:id" element={<Place />} />
 
                 <Route path="/mypage" element={<Mypage />} />
-                {/* <Route path="/test" element={
-          <div>
-            <ImgUpload></ImgUpload>
-            {
-              places.slice(0).reverse().map(function (a) {
-                return <Test data={a} />
-              })
-            }
-          </div>
-        }></Route> */}
+
+                <Route
+                    path="/test"
+                    element={
+                        <div>
+                            <ImgUpload></ImgUpload>
+                            {places
+                                .slice(0)
+                                .reverse()
+                                .map(function (a) {
+                                    return <Test data={a} />;
+                                })}
+                        </div>
+                    }
+                ></Route>
             </Routes>
             <Footer />
         </div>

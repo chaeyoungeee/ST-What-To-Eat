@@ -1,5 +1,8 @@
 import MapNaverDefault from '../components/MapNaverDefault';
+import axios from 'axios';
 function Test(props) {
+    axios.get('/t')
+
     return (
         <div>
             <p>{props.data.category}</p>
