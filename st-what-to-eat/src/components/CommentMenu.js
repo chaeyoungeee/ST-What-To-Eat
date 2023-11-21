@@ -13,7 +13,7 @@ function CommentMenu(props) {
             .delete('/comment', {
                 params: {
                     comment: props.comment,
-                },
+                }
             })
             .then((response) => {
                 props.setComments(response.data);

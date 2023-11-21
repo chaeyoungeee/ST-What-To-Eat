@@ -22,6 +22,7 @@ function CommentInput(props) {
             console.log(response.data);
             let new_comments = [...props.comments, response.data];
             props.setComments(new_comments);
+            setInput('')
         });
     };
 

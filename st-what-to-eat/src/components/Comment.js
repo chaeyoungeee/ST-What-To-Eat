@@ -21,7 +21,6 @@ function Comment(props) {
 
     const handleEditInputVisible = async () => {
         await axios.get('/user').then((response) => {
-            console.log(response.data);
             if (props.comment.user_id == response.data._id) setEdit(!edit);
             else {
                 alert(`${response.data.nickname}님이 작성한 댓글이 아닙니다.`);
@@ -40,6 +39,7 @@ function Comment(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         let data = {
+            place_id: props.comment.place_id,
             comment_id: props.comment._id,
             content: input,
         };
