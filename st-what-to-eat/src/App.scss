@@ -879,6 +879,29 @@ textarea::placeholder {
     margin: 0.3rem -0.5rem;
 }
 
+.search {
+    text-align: right;
+    .search-input {
+    width: 50%;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    border: 1px solid var(--dark);
+    margin-right: 0.5rem;
+    }
+
+    button[type='submit'] {
+        background-color: var(--green);
+        border: 1px solid var(--green);
+        font-weight: 700;
+        padding: 0.5rem 1rem;
+        border-radius: 2rem;
+        border: none;
+    }
+    
+}
+
+
 #category,
 #mypage {
     h3 {

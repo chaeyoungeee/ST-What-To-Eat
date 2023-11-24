@@ -8,6 +8,7 @@ import Grid from '../components/Grid';
 import { initPlaces } from '../store';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { IoSearch } from 'react-icons/io5';
 
 function Category() {
     const dispatch = useDispatch();
@@ -76,6 +77,23 @@ function Category() {
         }
     };
 
+    const [search, setSearch] = useState('')
+
+    const handleInputChange = (e) => {
+        setSearch(e.target.value)
+    }
+
+    const handleInputSubmit = async (e) => {
+        e.preventDefault()
+        
+        setSelectedCategory("전체")
+        let filter = places.filter((place)=>{
+            return place.name.includes(search)
+        })
+        console.log(filter)
+        setPl(filter)
+    }
+
     // if (pl.length == 0)
     //     return (
     //         <div className="first loading">
@@ -89,7 +107,19 @@ function Category() {
             <div className={'start ' + fade}>
                 <div className="title-pd text-start">
                     <h1>📂</h1>
-                    <h3 className="title">Filter</h3>
+                    <Row>
+                        <Col>
+                            <h3 className="title">Filter</h3>
+                        </Col>
+                        <Col>
+                            <form className='search' onSubmit={handleInputSubmit}>
+                                <input onChange={handleInputChange} className="search-input"></input>
+                                <button type="submit">
+                                    <IoSearch></IoSearch>
+                                </button>
+                            </form>
+                        </Col>
+                    </Row>
                     <Row className="filter-box">
                         <Col md={8}>
                             <motion.div

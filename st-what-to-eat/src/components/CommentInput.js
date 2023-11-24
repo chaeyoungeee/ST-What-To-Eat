@@ -23,7 +23,9 @@ function CommentInput(props) {
             let new_comments = [...props.comments, response.data];
             props.setComments(new_comments);
             setInput('')
-        });
+        }).catch((error)=>{
+            alert(error.response.data);
+        })
     };
 
     return (

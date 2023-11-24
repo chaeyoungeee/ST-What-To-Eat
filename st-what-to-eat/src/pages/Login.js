@@ -82,7 +82,7 @@ function Login() {
                 </button>
                 <p>{errorMessage}</p>
 
-                <Row className="social-login">
+                {/* <Row className="social-login">
                     <Col xs={4}></Col>
                     <Col xs={2}>
                         <img src={navericon}></img>
@@ -91,7 +91,7 @@ function Login() {
                         <img src={kakaoicon}></img>
                     </Col>
                     <Col xs={4}></Col>
-                </Row>
+                </Row> */}
             </form>
         </div>
     );
