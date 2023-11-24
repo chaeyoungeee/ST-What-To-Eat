@@ -9,6 +9,7 @@ function Mypage() {
     let navigate = useNavigate();
 
     let [likes, setLikes] = useState(null);
+    let [nickname, setNickname] = useState('');
     useEffect(() => {
         axios
             .get('/mypage')
@@ -18,6 +19,10 @@ function Mypage() {
             .catch((error) => {
                 navigate('/login');
             });
+
+        axios.get('/user').then((response) => {
+            setNickname(response.data.nickname);
+        });
 
         setTimeout(() => {
             setFade('end');
@@ -33,6 +38,7 @@ function Mypage() {
                 <div className="title-pd">
                     <h1>💁🏻</h1>
                     <h3 className="title">Mypage</h3>
+                    <p>{nickname}님이 즐겨찾기 하신 음식점입니다.</p>
                 </div>
                 <Grid setLikes={setLikes} places={likes} mypage={true}></Grid>
             </div>

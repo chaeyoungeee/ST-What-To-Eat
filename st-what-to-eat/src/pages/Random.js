@@ -37,7 +37,7 @@ function Random(props) {
             <h1>🙌</h1>
             <h3 className="title">Random</h3>
 
-            <p className="desc">주사위를 눌러 랜덤 메뉴를 추천 받아보세요!</p>
+            <p className="desc">주사위를 눌러 랜덤으로 음식점을 추천 받아보세요!</p>
             <Container className="container mt-3 text-center">
                 <Row data-aos="zoom-in-down" data-aos-duration="800">
                     <Col xs={12} className="d-flex justify-content-center align-items-center">

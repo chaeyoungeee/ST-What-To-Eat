@@ -16,8 +16,6 @@ function Category() {
         return state.places;
     });
 
-    
-
     let category = useSelector((state) => state.category);
     let [pl, setPl] = useState([...places].reverse());
     let [selectedCategory, setSelectedCategory] = useState('전체');
@@ -77,22 +75,22 @@ function Category() {
         }
     };
 
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState('');
 
     const handleInputChange = (e) => {
-        setSearch(e.target.value)
-    }
+        setSearch(e.target.value);
+    };
 
     const handleInputSubmit = async (e) => {
-        e.preventDefault()
-        
-        setSelectedCategory("전체")
-        let filter = places.filter((place)=>{
-            return place.name.includes(search)
-        })
-        console.log(filter)
-        setPl(filter)
-    }
+        e.preventDefault();
+
+        setSelectedCategory('전체');
+        let filter = places.filter((place) => {
+            return place.name.includes(search);
+        });
+        console.log(filter);
+        setPl(filter);
+    };
 
     // if (pl.length == 0)
     //     return (
@@ -100,7 +98,6 @@ function Category() {
     //             <div className={'start ' + fade}></div>
     //         </div>
     //     );
-
 
     return (
         <div id="category" className="first">
@@ -112,11 +109,16 @@ function Category() {
                             <h3 className="title">Filter</h3>
                         </Col>
                         <Col>
-                            <form className='search' onSubmit={handleInputSubmit}>
-                                <input onChange={handleInputChange} className="search-input"></input>
-                                <button type="submit">
+                            <form className="search" onSubmit={handleInputSubmit}>
+                                <input onChange={handleInputChange} placeholder="음식점명을 검색해보세요!" className="search-input"></input>
+                                <motion.button
+                                    type="submit"
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.9 }}
+                                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                                >
                                     <IoSearch></IoSearch>
-                                </button>
+                                </motion.button>
                             </form>
                         </Col>
                     </Row>
