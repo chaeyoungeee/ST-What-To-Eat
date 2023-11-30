@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f92aa09d.css",
+    "main.js": "/static/js/main.9c56e141.js",
+    "static/js/787.b83655cb.chunk.js": "/static/js/787.b83655cb.chunk.js",
+    "static/media/memoji.gif": "/static/media/memoji.321f970e61ce51b3636f.gif",
+    "static/media/memoji2.png": "/static/media/memoji2.7b93464df778d6864760.png",
+    "service-worker.js": "/service-worker.js",
+    "static/media/kakao-login.png": "/static/media/kakao-login.1553b6a252a9613b0f04.png",
+    "static/media/GT-Flexa-Extended-Black-Trial.woff2": "/static/media/GT-Flexa-Extended-Black-Trial.297056897a1b7813ace7.woff2",
+    "index.html": "/index.html",
+    "main.f92aa09d.css.map": "/static/css/main.f92aa09d.css.map",
+    "main.9c56e141.js.map": "/static/js/main.9c56e141.js.map",
+    "787.b83655cb.chunk.js.map": "/static/js/787.b83655cb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f92aa09d.css",
+    "static/js/main.9c56e141.js"
+  ]
+}
