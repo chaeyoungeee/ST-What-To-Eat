@@ -882,12 +882,12 @@ textarea::placeholder {
 .search {
     text-align: right;
     .search-input {
-    width: 50%;
-    font-weight: 700;
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
-    border: 1px solid var(--dark);
-    margin-right: 0.5rem;
+        width: 50%;
+        font-weight: 700;
+        padding: 0.5rem 1rem;
+        border-radius: 2rem;
+        border: 1px solid var(--dark);
+        margin-right: 0.5rem;
     }
 
     button[type='submit'] {
@@ -898,9 +898,7 @@ textarea::placeholder {
         border-radius: 2rem;
         border: none;
     }
-    
 }
-
 
 #category,
 #mypage {
@@ -973,4 +971,85 @@ textarea::placeholder {
 
 .tossface {
     font-family: Tossface;
+}
+
+.navbar {
+    .container {
+        margin-top: 0.5rem !important;
+    }
+    .navbar-toggler-icon {
+        width: 1rem;
+        height: 1.5rem;
+    }
+    .navbar-toggler {
+        &:focus,
+        &:active {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        .navbar-collapse {
+            z-index: 3;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 12rem;
+            background-color: var(--white);
+        }
+
+        .main-bar {
+            text-align: end;
+            align-items: flex-end;
+            .nav-link {
+                transition: var(--default-transition);
+                font-size: 0.9rem;
+                &:hover {
+                    background-color: transparent;
+                    .menu-icon {
+                        animation: scaleUp 0.3s linear forwards;
+                    }
+                }
+                &:not(:hover) {
+                    .menu-icon {
+                        animation: scaleDown 0.3s linear forwards;
+                    }
+                }
+            }
+        }
+
+        .side-bar {
+            text-align: end;
+            align-items: flex-end;
+            .nav-link {
+                font-size: 0.9rem;
+                background-color: var(--white);
+                transition: var(--default-transition);
+
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}
+
+
+.background {
+    z-index: 2;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    left: 0;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+}
+
+.hidden {
+    visibility: hidden;
+    transition: var(--default-transition);
 }

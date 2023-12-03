@@ -16,22 +16,30 @@ import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 function MainNav() {
-    let [fade, setFade] = useState('');
     let isLogin = useSelector((state) => {
         return state.isLogin;
     });
     const [br, setBr] = useState('');
+    const [visible, setVisible] = useState('hidden');
+    const [visible2, setVisible2] = useState('hidden');
     const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //   setTimeout(() => { setFade('end') }, 1500)
-
-    //   return () => {
-    //     setFade('')
-    //   }
-    // }, [])
+    const handleToggle = (e) => {
+        e.stopPropagation();
+        setVisible('');
+        setVisible2('');
+    };
+    const handleBackgroundClick = (e) => {
+        e.stopPropagation();
+        setVisible('hidden');
+        setVisible2('hidden');
+    };
 
     useEffect(() => {
+        if (window.width < 767) {
+            setVisible2('hidden');
+        }
+        setVisible('hidden');
+        setVisible2('');
         axios
             .get('/user')
             .then((response) => {
@@ -74,9 +82,16 @@ function MainNav() {
                         🤔
                     </Navbar.Brand>
                 </motion.div>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="main-bar">
+                <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={handleToggle} />
+                <div onClick={handleBackgroundClick} className={`background ${visible}`}></div>
+                <Navbar.Collapse className={`${visible2}`} id="basic-navbar-nav">
+                    <Nav
+                        className="main-bar"
+                        onClick={() => {
+                            setVisible('hidden');
+                            setVisible2('hidden');
+                        }}
+                    >
                         {currentUrl == '/' ? (
                             <Nav.Link href="#best">
                                 <FiAward className="menu-icon"></FiAward>
