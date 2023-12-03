@@ -17,11 +17,14 @@ function Mypage() {
                 setLikes(response.data.reverse());
             })
             .catch((error) => {
+                console.log(error)
                 navigate('/login');
             });
 
         axios.get('/user').then((response) => {
             setNickname(response.data.nickname);
+        }).catch((error)=>{
+            console.log();
         });
 
         setTimeout(() => {
