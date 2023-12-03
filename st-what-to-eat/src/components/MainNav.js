@@ -20,26 +20,18 @@ function MainNav() {
         return state.isLogin;
     });
     const [br, setBr] = useState('');
-    const [visible, setVisible] = useState('hidden');
     const [visible2, setVisible2] = useState('hidden');
     const dispatch = useDispatch();
     const handleToggle = (e) => {
-        e.stopPropagation();
-        setVisible('');
+        console.log(window.innerWidth);
         setVisible2('');
     };
-    const handleBackgroundClick = (e) => {
-        e.stopPropagation();
-        setVisible('hidden');
+    const handleMenuClick = () => {
+        console.log(window.innerWidth);
         setVisible2('hidden');
     };
 
     useEffect(() => {
-        if (window.width < 767) {
-            setVisible2('hidden');
-        }
-        setVisible('hidden');
-        setVisible2('');
         axios
             .get('/user')
             .then((response) => {
@@ -83,15 +75,8 @@ function MainNav() {
                     </Navbar.Brand>
                 </motion.div>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={handleToggle} />
-                <div onClick={handleBackgroundClick} className={`background ${visible}`}></div>
                 <Navbar.Collapse className={`${visible2}`} id="basic-navbar-nav">
-                    <Nav
-                        className="main-bar"
-                        onClick={() => {
-                            setVisible('hidden');
-                            setVisible2('hidden');
-                        }}
-                    >
+                    <Nav className="main-bar" onClick={handleMenuClick}>
                         {currentUrl == '/' ? (
                             <Nav.Link href="#best">
                                 <FiAward className="menu-icon"></FiAward>
@@ -132,7 +117,7 @@ function MainNav() {
                         </Nav.Link>
                     </Nav>
 
-                    <Nav className="side-bar ms-auto">
+                    <Nav onClick={handleMenuClick} className="side-bar ms-auto">
                         <motion.div
                             whileHover={{ scale: 1.1 }}
                             transition={{ type: 'spring', stiffness: 400, damping: 10 }}
