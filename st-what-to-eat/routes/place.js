@@ -61,6 +61,25 @@ router.put('/like', checkLogin, async (req, res, next) => {
         .toArray();
     let likes = data[0];
     likes = likes.likes;
+    console.log(likes)
+    if (likes == undefined) {
+                await db.collection('place').updateOne(
+                    { _id: new ObjectId(req.body.id) },
+                    {
+                        $inc: {
+                            like: 1,
+                        },
+                    }
+                );
+
+                await db.collection('user').updateOne(
+                    { username: req.user.username },
+                    {
+                        $push: { likes: req.body.id },
+                    }
+                );
+                res.json(true);
+    }
     let isAlready = likes.find((id) => {
         return new ObjectId(id).equals(new ObjectId(req.body.id));
     });

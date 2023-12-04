@@ -39,8 +39,8 @@ router.post('/', async (req, res) => {
         return res.status(404).send('이미 존재하는 아이디입니다.');
     }
 
-    if (req.body.password.length < 4) {
-        return res.status(404).send('"비밀번호는 4글자 이상이어야 합니다.');
+    if (req.body.password.length < 7) {
+        return res.status(404).send('비밀번호는 7글자 이상이어야 합니다.');
     }
 
 
