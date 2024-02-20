@@ -79,8 +79,8 @@ Amazon S3
 3. Like: 즐겨찾기수가 가장 높은 상위 3 곳의 음식점을 출력해준다.
 4. Footer: 로그인을 한 사용자가 추천하고 싶은 음식점을 제출하면 관리자가 반영할 수 있도록 DB 에 저장한다.
 ```
-<p width="550" align="center" >
-  <img src="https://github.com/chaeyoungeee/ST-What-To-Eat/assets/102286483/2393706e-b4b5-41de-bee2-9772c099284c">
+<p align="center" >
+  <img width="550" src="https://github.com/chaeyoungeee/ST-What-To-Eat/assets/102286483/2393706e-b4b5-41de-bee2-9772c099284c">
 </p>
 
 > 회원가입 및 로그인 페이지
@@ -93,8 +93,8 @@ Amazon S3
 1. 아이디나 비밀번호가 틀리면 해당하는 알림을 화면에 출력한다.
 2. 세션 유효기간: 세션 유효기간을 24 시간으로 지정해 세션을 DB 에 저장해 24 시간동안 로그인이 유지된다.
 ```
-<p width="550" align="center" >
-  <img src="https://github.com/chaeyoungeee/ST-What-To-Eat/assets/102286483/fa0f9bfe-1cf6-49a1-b233-fc30a861e113">
+<p align="center" >
+  <img width="550" src="https://github.com/chaeyoungeee/ST-What-To-Eat/assets/102286483/fa0f9bfe-1cf6-49a1-b233-fc30a861e113">
 </p>
 
 > 카테고리 페이지
@@ -102,6 +102,9 @@ Amazon S3
 1. 필터: 해당 카테고리를 선택하면 그 카테고리에 해당하는 음식점을 출력한다.
 2. 정렬: 추천순/인기순/최신순으로 정렬해 음식점을 출력한다.
 ```
+<p align="center" >
+  <img width="550" src="https://github.com/chaeyoungeee/ST-What-To-Eat/assets/102286483/705dbd1b-1a73-4275-99fc-5f8ebe4fcbc5">
+</p>
 
 > 디테일 페이지
 ```
@@ -110,11 +113,20 @@ Amazon S3
 3. 추천, 비추천, 즐겨찾기: 추천, 비추천, 즐겨찾기를 DB 에서 불러와 출력하고 반영한다. 즐겨찾기한 음식점은 즐겨찾기 페이지에서 확인할 수 있다. 로그인한 사용자만 이용이 가능하고 로그인하지 않은 사용자가 해당 버튼을 클릭시 로그인 알림이 출력된다.
 4. 댓글:DB에서 현재 음식점에 해당하는 댓글을 불러와 출력한다. 사용자는 자신이 쓴 댓글에 대해 수정 및 삭제가 가능하다. 댓글은 로그인한 사용자만 입력할 수 있으며 로그인하지 않은 사용자가 해당 버튼을 클릭시 로그인 알림이 출력된다.
 ```
+<p align="center" >
+  <img width="550" src="https://github.com/chaeyoungeee/ST-What-To-Eat/assets/102286483/7da78759-7640-49ee-9751-3f337afc5333">
+</p>
+<p align="center" >
+  <img width="550" src="https://github.com/chaeyoungeee/ST-What-To-Eat/assets/102286483/35464522-6621-4409-a866-97221b4fa319">
+</p>
 
 > 즐겨찾기 페이지
 ```
 1. 사용자가 즐겨찾기한 음식점을 DB 에서 불러와 출력한다. 즐겨찾기한 음식점은 삭제 버튼을 통해 삭제 가능하며 로그인한 사용자만 해당 페이지를 이용할 수 있으며 로그인하지 않은 사용자가 즐겨찾기 페이지에 접속하려 할 시 로그인 페이지로 네비게이트된다.
 ```
+<p align="center" >
+  <img width="550" src="https://github.com/chaeyoungeee/ST-What-To-Eat/assets/102286483/506e613b-353a-46b9-a664-34432f46b632">
+</p>
 
 ## ❗️Project 발전 방향
 1. **위치 기반 음식점 추천 최적화**: 사용자의 현재 위치를 고려하여 주변 음식점과의 거리를 계산하고, 이를 기반으로 거리순으로 정렬하는 기능을 추가할 것이다. 이를 통해 사용자가 빠른 시간 내에 이용할 수 있는 음식점을 추천해줄 수 있다.
