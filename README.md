@@ -9,33 +9,33 @@
 평가를 댓글로 남길 수 있어 맛집에 대한 활발한 공유의 장이 될 수 있다.
 
 ## ❗️Project 설계
-> Use Case
+#### 1. Use Case
 <p align="center">
   <img width="433" alt="usecase" src="https://github.com/chaeyoungeee/ST-What-To-Eat/assets/102286483/9b3cb7b7-664d-4048-a654-c8153ca4cdf7">
 </p>
   
-> DB 설계
+#### 2. DB 설계
 <p align="center">
 <img width="452" alt="db" src="https://github.com/chaeyoungeee/ST-What-To-Eat/assets/102286483/3b2d667e-d1a9-43c6-91ff-8c484a767401">
 </p>
 
-> 사이트 구성도
+#### 3. 사이트 구성도
 <p align="center">
 <img width="452" src="https://github.com/chaeyoungeee/ST-What-To-Eat/assets/102286483/f3baff7e-4793-4479-8867-8bc80b3a5a20">
 </p>
 
-
-> 서비스 절차
+#### 4. 서비스 절차
 - 비로그인
 <p align="center">
 <img width="452" src="https://github.com/chaeyoungeee/ST-What-To-Eat/assets/102286483/1ec1bbd3-6997-46ee-8de5-b9ccf1080eff">
 </p>
+
 - 로그인
 <p align="center">
 <img width="452" src="https://github.com/chaeyoungeee/ST-What-To-Eat/assets/102286483/5a08b4d5-cc13-486b-8d85-7fd393bd7ef3">
 </p>
 
-> API 명세서
+#### 5. API 명세서
 
 |Method|URI|Description|
 |---|---|---|
@@ -56,18 +56,13 @@
 |POST|/requirement|음식점 요청 생성|
 
 ## ❗️사용 기술 스택
-> Frontend
-
+- **Frontend**
 ReactJS, Bootstrap, SCSS
-> Backend
-
+- **Backend**
 NodeJS
-> DB
-
+- **DB**
 MongoDB
-
-> Cloud Storage
-
+- **Cloud Storage**
 Amazon S3
 
 
