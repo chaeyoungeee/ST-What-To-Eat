@@ -17,9 +17,9 @@
 
 ## ❗️기술 스택
 #### Frontend <br>
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"> <img src="https://img.shields.io/badge/Bootstrap-1572B6?style=for-the-badge&logo=Css&logoColor=white"> <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=purple">
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"> <img src="https://img.shields.io/badge/Bootstrap-1572B6?style=for-the-badge&logo=bootstrap&logoColor=white"> <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white">
 #### Backend <br>
-<img src="https://img.shields.io/badge/Node.js-5FA04E?style=for-the-badge&logo=Redux&logoColor=purple"> <img src="https://img.shields.io/badge/MongDB-47A248?style=for-the-badge&logo=Redux&logoColor=white"> <img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Redux&logoColor=white">
+<img src="https://img.shields.io/badge/Node.js-5FA04E?style=for-the-badge&logo=node.js&logoColor=white"> <img src="https://img.shields.io/badge/MongDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=amazon s3&logoColor=white">
 
 ## ❗️ 핵심 기능
 - 랜덤으로 음식점을 추천해줍니다.
